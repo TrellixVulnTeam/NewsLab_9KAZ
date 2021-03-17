@@ -1,9 +1,13 @@
 
 ## Clean
-0 14 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/NewsLab/clean/company_names.py
+0 9 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/clean/company_names.py
+30 20 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/clean/save.py
 
 ## RSS
-15 0 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/NewsLab/rss/save.py
+30 20 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/rss/save.py
 
 ## News
-*/45 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/NewsLab/rss/save.py
+00 0,3,6,9,12,15,18,21 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/news/job.py
+15 2,5,8,11,14,17,20,23 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/news/job.py
+30 1,4,7,10,13,16,19,22 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/news/job.py
+45 0,3,6,9,12,15,18,21 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/news/job.py
