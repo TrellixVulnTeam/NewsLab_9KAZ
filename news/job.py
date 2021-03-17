@@ -118,7 +118,7 @@ def collect_news(job_id, company_names, hash_cache, hashs, errors):
 
 	except Exception as e:
 
-		errors.put(e)
+		errors.put(f"{e}\n{traceback.format_exc()}")
 
 	with open(HASHDIR / f"{job_id}.json", "w") as file:
 		file.write(json.dumps(hash_cache[SDATE]))
@@ -158,9 +158,9 @@ def main():
 		with open(file, "r") as _file:
 			hash_cache[SDATE].extend(json.loads(_file.read()))
 
-	n_items = len(hash_cache[SDATE])
 	hash_cache[SDATE] = list(set(hash_cache[SDATE]))
-	n_unique = len(hash_cache[SDATE])
+	n_items = len(hash_cache[SDATE])
+	n_unique = n_items
 
 	hashs = set([
 		_hash
