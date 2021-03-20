@@ -6,17 +6,18 @@ import pytz
 import json
 import os
 
+SDIR = "/media/zquantz/0236e42e-4d80-45cf-b1f7-f12ee259facd/NewsLab"
 DIR = os.path.realpath(os.path.dirname(__file__))
-RAWDIR = Path(f"{DIR}/raw_data")
-UZDIR = Path(f"{DIR}/uz_data")
-ZDIR = Path(f"{DIR}/z_data")
+RAWDIR = Path(f"{SDIR}/raw_data")
+UZDIR = Path(f"{SDIR}/uz_data")
+ZDIR = Path(f"{SDIR}/z_data")
 
 RSS_BUCKET = storage.Client().bucket("oscrap_storage")
-RSS_FOLDER = Path("news_data/rss/")
+RSS_FOLDER = Path(f"{SDIR}/news_data/rss/")
 
 BUCKET = storage.Client().bucket("cnbc-storage")
-CNBC_FOLDER = Path("news_data/cnbc/")
-GOOGLE_FOLDER = Path("news_data/google/")
+CNBC_FOLDER = Path(f"{SDIR}/news_data/cnbc/")
+GOOGLE_FOLDER = Path(f"{SDIR}/news_data/google/")
 
 SUBSET = []
 

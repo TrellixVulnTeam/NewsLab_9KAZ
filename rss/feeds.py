@@ -72,7 +72,7 @@ class Feeds(Thread):
 
 		self.coords.rotate()
 		self.source, self.feed = self.coords[0]
-		
+
 		try:
 			response = feedparser.parse(self.feed)
 		except Exception as e:
@@ -95,9 +95,9 @@ class Feeds(Thread):
 
 		for entry in entries:
 			
-			_id = entry['id'] if 'id' in entry else get_id(entry.copy())
+			_id = entry['id'] if self.source == 'Google' else get_id(entry.copy())
 			if _id in self.last[self.feed]:
-				break
+				continue
 
 			self.last[self.feed].append(_id)
 			self.last[self.feed] = self.last[self.feed][-self.WINDOW:]

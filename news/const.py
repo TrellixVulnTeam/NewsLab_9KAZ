@@ -42,9 +42,4 @@ ENGINE = sql.create_engine(
 	pool_pre_ping=True
 )
 
-file = f"{DIR}/data/ticker_coordinates.csv"
-if not os.path.isfile(file):
-    df = pd.DataFrame(columns = ['ticker', 'name'])
-    df.to_csv(file, index=False)
-
 ###################################################################################################

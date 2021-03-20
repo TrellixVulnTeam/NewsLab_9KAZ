@@ -54,6 +54,7 @@ def get_scores(sentences):
 
 def cleaning_loop():
 
+	ctr = 0
 	files = {NEWS_DIR / ".gitignore"}
 	n_clean = len(list(CLEAN_DIR.iterdir()))
 
@@ -120,23 +121,27 @@ def cleaning_loop():
 
 		###########################################################################################
 
-		try:
-			
-			send_metric(
-				CONFIG,
-				"rss_counter",
-				"int64_value",
-				len(list(NEWS_DIRS[0].iterdir())) - 1
-			)
+		if ctr % 10 == 0:
 
-		except Exception as e:
+			try:
+				
+				send_metric(
+					CONFIG,
+					"rss_counter",
+					"int64_value",
+					len(list(NEWS_DIRS[0].iterdir())) - 1
+				)
+				ctr = 0
 
-			logger.warning(e)
+			except Exception as e:
+
+				logger.warning(e)
 
 		###########################################################################################
 
-		n_clean = n_clean_new
+		ctr += 1
 		time.sleep(5)
+		n_clean = n_clean_new
 
 if __name__ == '__main__':
 

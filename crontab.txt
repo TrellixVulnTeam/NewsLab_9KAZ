@@ -1,10 +1,15 @@
 
+## Truncate Log Files
+0 0 * * 0 . $HOME/.profile ; $HOME/anaconda3/bin/python > $HOME/Documents/Quant/NewsLab/clean/log.log
+0 0 * * 0 . $HOME/.profile ; $HOME/anaconda3/bin/python > $HOME/Documents/Quant/NewsLab/news/log.log
+0 0 * * 0 . $HOME/.profile ; $HOME/anaconda3/bin/python > $HOME/Documents/Quant/NewsLab/rss/log.log
+
 ## Clean
-0 9 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/clean/company_names.py
-30 20 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/clean/save.py
+00 6 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/clean/company_names.py
+30 6 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/clean/save.py
 
 ## RSS
-30 20 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/rss/save.py
+30 6 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/rss/save.py
 
 ## News
 00 0,3,6,9,12,15,18,21 * * * . $HOME/.profile ; $HOME/anaconda3/bin/python $HOME/Documents/Quant/NewsLab/news/job.py

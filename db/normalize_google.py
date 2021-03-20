@@ -168,17 +168,16 @@ def remove_duplicates():
 		new_items = []
 		for item in items:
 
-			_hash = md5(json.dumps(item, sort_keys = True).encode()).hexdigest()
-			if _hash in hashs:
+			_id = item['id']
+			if _id in ids:
 				continue
 
 			article_source = item.get('source', {})
 			article_source = article_source.get('title')
 			if article_source not in news_sources:
-				print(article_source)
 				continue
 
-			hashs.add(_hash)
+			ids.add(_id)
 			new_items.append(item)
 
 		print(len(items), len(new_items))
