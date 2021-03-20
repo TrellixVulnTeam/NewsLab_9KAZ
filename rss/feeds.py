@@ -11,9 +11,26 @@ import sys, os
 import json
 import uuid
 
+KEYS = [
+	'links',
+	'link',
+	'updated',
+	'published',
+	'published_parsed'
+]
+
+def get_id(item):
+
+	for key in KEYS:
+		if key in item:
+			item.pop(key)
+
+	_hash = json.dumps(item, sort_keys = True).encode()
+	return md5(_hash).hexdigest()
+
 class Feeds(Thread):
 	
-	WINDOW = 1000
+	WINDOW = 10_000
 
 	def __init__(self, sources, feeds, sleep, logger):
 
@@ -28,7 +45,7 @@ class Feeds(Thread):
 		])
 
 		self.entries = []
-		self.last_45 = {
+		self.last = {
 			feed : []
 			for _, feed in self.coords
 		}
@@ -78,18 +95,17 @@ class Feeds(Thread):
 
 		for entry in entries:
 			
-			entry_str = json.dumps(entry, sort_keys = True).encode()
-			entry_hash = md5(entry_str).hexdigest()
-			
-			if entry_hash in self.last_45[self.feed]:
+			_id = entry['id'] if 'id' in entry else get_id(entry.copy())
+			if _id in self.last[self.feed]:
 				break
 
-			self.last_45[self.feed].append(entry_hash)
-			self.last_45[self.feed] = self.last_45[self.feed][-self.WINDOW:]
+			self.last[self.feed].append(_id)
+			self.last[self.feed] = self.last[self.feed][-self.WINDOW:]
 
 			entry['acquisition_datetime'] = datetime.now(tz=timezone.utc).isoformat()[:19]
 			entry['feed_source'] = self.source
 			entry['_source'] = 'rss'
+			entry['id'] = _id
 
 			print(self.source)
 			self.entries.append(entry)

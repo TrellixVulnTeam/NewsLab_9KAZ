@@ -227,7 +227,7 @@ def request(url, logger=None):
 	if tries >= max_tries:
 		raise Exception("Too many requests.")
 
-def save_items(path, hashs, date):
+def save_items(path, ids, date):
 
 	files = list(path.iterdir())
 	files.remove(path / ".gitignore")
@@ -241,18 +241,11 @@ def save_items(path, hashs, date):
 			for item in json.loads(_file.read()):
 
 				n_items += 1
-
-				dummy_item = item.copy()
-				if '_index' in dummy_item:
-					dummy_item = dummy_item['_source']
-
-				dummy_item.pop('acquisition_datetime')
-
-				_hash = md5(json.dumps(dummy_item).encode()).hexdigest()
-				if _hash in hashs:
+				_id = item.get('id', item.get('_id'))
+				if _id in ids or not _id:
 					continue
 
-				hashs.add(_hash)
+				ids.add(_id)
 				items.append(item)
 
 	###############################################################################################

@@ -3,8 +3,8 @@ from elasticsearch import Elasticsearch, helpers
 from const import DIR, CONFIG, logger
 from clean_item import clean_item
 from importlib import reload
-from hashlib import sha256
 from pathlib import Path
+from hashlib import md5
 import requests
 import shutil
 import sys, os
@@ -42,7 +42,7 @@ def get_files(files):
 			(NEWS_DIR / file.name) not in files
 			and
 			file.name != '.gitignore'
-		) 
+		)
 	]
 
 def get_scores(sentences):
@@ -64,10 +64,9 @@ def cleaning_loop():
 
 		if n_clean_new < n_clean:
 			files = {NEWS_DIR / ".gitignore"}
+			reload(sys.modules['clean_item'])
 			reload(sys.modules['find_company_names'])
 			logger.info("reloading the company names")
-
-		n_clean = n_clean_new
 				
 		items = []
 		for new_file in new_files:
@@ -85,22 +84,15 @@ def cleaning_loop():
 				continue
 
 			item = clean_item(item)
+			dummy_item = item.copy()
+			dummy_item.pop('acquisition_datetime')
 
-			dummy_item = {
-				"title" : item['title'].lower(),
-				"link" : item['link'].lower()
-			}
-			
-			summary = item.get('summary')
-			if summary:
-				dummy_item['summary'] = summary
-
-			dummy_item = json.dumps(dummy_item, sort_keys = True)
-			_hash = sha256(dummy_item.encode()).hexdigest()
+			_id = json.dumps(dummy_item, sort_keys = True)
+			_id = md5(_id.encode()).hexdigest()
 
 			new_items.append({
 				"_index" : "news",
-				"_id" : _hash,
+				"_id" : _id,
 				"_op_type" : "create",
 				"_source" : item
 			})
@@ -116,7 +108,7 @@ def cleaning_loop():
 			for item, score in zip(new_items, scores):
 				item['_source']['sentiment'] = score['prediction']
 				item['_source']['sentiment_score'] = score['sentiment_score']
-				item['_source']['abs_sentiment_score'] = abs(score['sentiment_score'])	
+				item['_source']['abs_sentiment_score'] = abs(score['sentiment_score'])
 
 			successes, failures = helpers.bulk(ES_CLIENT,
 											   new_items,
@@ -144,6 +136,9 @@ def cleaning_loop():
 
 			logger.warning(e)
 
+		###########################################################################################
+
+		n_clean = n_clean_new
 		time.sleep(3)
 
 if __name__ == '__main__':

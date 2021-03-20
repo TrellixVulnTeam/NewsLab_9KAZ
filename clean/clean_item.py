@@ -110,7 +110,7 @@ def clean_item(item):
 	ticker_matches = []
 	ticker_misses = []
 	categories = []
-	_authors = []
+	authors = []
 	contribs = []
 	tables = []
 
@@ -143,14 +143,14 @@ def clean_item(item):
 
 	if is_og_rss:
 
-		_authors.append(item.get("author"))
+		authors.append(item.get("author"))
 		for author in item.get("authors", []):
-			_authors.append(author.get('name'))
+			authors.append(author.get('name'))
 
-		_authors.append(item.get("author_detail", {"name" : None}).get('name'))
-		_authors.append(item.get("publisher"))
+		authors.append(item.get("author_detail", {"name" : None}).get('name'))
+		authors.append(item.get("publisher"))
 
-		_authors = [author for author in _authors if author]
+		authors = [author for author in authors if author]
 
 		for contributor in item.get("contributors", []):
 			contribs.append(contributor.get('name'))
@@ -364,11 +364,11 @@ def clean_item(item):
 			for cat in list(set(categories))
 		]
 
-	if _authors:
+	if authors:
 		new_item['authors'] = [
 			author.lower()
 			for author in
-			list(set(_authors)) + [item['article_source']]
+			list(set(authors)) + [item['article_source']]
 		]
 
 	if contribs:

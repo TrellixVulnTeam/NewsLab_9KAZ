@@ -22,49 +22,49 @@ from utils import send_metric, send_to_bucket, save_items
 
 URL = "https://news.google.com/rss/search?q={query}+when:1d&hl=en-CA&gl=CA&ceid=CA:en"
 PATH = Path(f"{DIR}/news_data")
-HASHDIR = Path(f"{DIR}/hashs")
+IDSDIR = Path(f"{DIR}/ids")
 FMT = "%Y-%m-%d"
 
 news_sources = list(pd.read_csv(f"{DIR}/data/news_sources.csv").news_source)
 
 ###################################################################################################
 
-def get_hash_cache():
+def get_id_cache():
 
     TDAY = datetime(DATE.year, DATE.month, DATE.day)
-    file = Path(f"{DIR}/data/hash_cache.json")
+    file = Path(f"{DIR}/data/id_cache.json")
     
     if file.exists():
 
         with open(file, "r") as _file:
-            hash_cache = json.loads(_file.read())
+            id_cache = json.loads(_file.read())
 
-        for date in hash_cache.keys():
+        for date in id_cache.keys():
 
             dt = datetime.strptime(date, FMT)
 
             if (TDAY - dt).days >= 7:
             
-                del hash_cache[date]
-                hash_cache[SDATE] = []
+                del id_cache[date]
+                id_cache[SDATE] = []
 
     else:
 
-        logger.warning(f"hash cache does not exist")
-        hash_cache = {
+        logger.warning(f"id cache does not exist")
+        id_cache = {
             (TDAY - timedelta(days=i)).strftime(FMT) : []
             for i in range(7)
         }
 
-    hashs = set([
-        _hash
-        for hash_list in hash_cache.values()
-        for _hash in hash_list
+    ids = set([
+        _id
+        for id_list in id_cache.values()
+        for _id in id_list
     ])
 
-    return hash_cache, hashs
+    return id_cache, ids
 
-def fetch(query, hash_cache, hashs):
+def fetch(query, id_cache, ids):
 
 	url = URL.format(query = query.replace(' ', '+'))
 	feed_entries = feedparser.parse(url)
@@ -81,12 +81,12 @@ def fetch(query, hash_cache, hashs):
 		if article_source not in news_sources:
 			continue
 
-		_hash = md5(json.dumps(item).encode()).hexdigest()
-		if _hash in hashs:
+		_id = item['id']
+		if _id in ids:
 			continue
 
-		hashs.add(_hash)
-		hash_cache[SDATE].append(_hash)
+		ids.add(_id)
+		id_cache[SDATE].append(_id)
 
 		item['acquisition_datetime'] = datetime.now().isoformat()[:19]
 		item['search_query'] = query
@@ -101,7 +101,7 @@ def fetch(query, hash_cache, hashs):
 	with open(PATH / f"{fname}.json", "w") as file:
 		file.write(json.dumps(items))
 
-def collect_news(job_id, company_names, hash_cache, hashs, errors):
+def collect_news(job_id, company_names, id_cache, ids, errors):
 
 	try:
 
@@ -113,15 +113,15 @@ def collect_news(job_id, company_names, hash_cache, hashs, errors):
 			logger.info(f"collecting {queries}, {progress}%")
 
 			ticker, company_name = data
-			fetch(ticker, hash_cache, hashs)
-			fetch(company_name, hash_cache, hashs)
+			fetch(ticker, id_cache, ids)
+			fetch(company_name, id_cache, ids)
 
 	except Exception as e:
 
 		errors.put(f"{e}\n{traceback.format_exc()}")
 
-	with open(HASHDIR / f"{job_id}.json", "w") as file:
-		file.write(json.dumps(hash_cache[SDATE]))
+	with open(IDSDIR / f"{job_id}.json", "w") as file:
+		file.write(json.dumps(id_cache[SDATE]))
 
 def main():
 
@@ -129,12 +129,12 @@ def main():
 	company_names = company_names[['ticker', 'name']]
 
 	chunks = np.array_split(company_names, 5)
-	hash_cache, hashs = get_hash_cache()
+	id_cache, ids = get_id_cache()
 
 	errors = mp.Queue()
 
 	processes = [
-		mp.Process(target=collect_news, args=(job_id, chunk, hash_cache, hashs, errors))
+		mp.Process(target=collect_news, args=(job_id, chunk, id_cache, ids, errors))
 		for job_id, chunk in enumerate(chunks)
 	]
 
@@ -150,26 +150,26 @@ def main():
 
 	###############################################################################################
 
-	for file in HASHDIR.iterdir():
+	for file in IDSDIR.iterdir():
 
 		if file.name == '.gitignore':
 			continue
 
 		with open(file, "r") as _file:
-			hash_cache[SDATE].extend(json.loads(_file.read()))
+			id_cache[SDATE].extend(json.loads(_file.read()))
 
-	hash_cache[SDATE] = list(set(hash_cache[SDATE]))
-	n_items = len(hash_cache[SDATE])
+	id_cache[SDATE] = list(set(id_cache[SDATE]))
+	n_items = len(id_cache[SDATE])
 	n_unique = n_items
 
-	hashs = set([
-		_hash
-		for hashlist in hash_cache.values()
-		for _hash in hashlist
+	ids = set([
+		_id
+		for idlist in id_cache.values()
+		for _id in idlist
 	])
 
-	with open(f"{DIR}/data/hash_cache.json", "w") as file:
-		file.write(json.dumps(hash_cache))
+	with open(f"{DIR}/data/id_cache.json", "w") as file:
+		file.write(json.dumps(id_cache))
 
 	###############################################################################################
 
@@ -180,7 +180,7 @@ def main():
 	if now.hour >= 20 and not xz_file.exists():
 
 		logger.info("news job, daily save")
-		n_items, n_unique = save_items(PATH, hashs, SDATE)
+		n_items, n_unique = save_items(PATH, ids, SDATE)
 
 		send_to_bucket(
 			CONFIG['GCP']['RAW_BUCKET'],
