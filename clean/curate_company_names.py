@@ -165,10 +165,15 @@ def replace_indices(df):
 	
 	new = [
 		['dow', 'DIA', 'NASDAQ', 'suff'],
+		['the dow', 'DIA', 'NASDAQ', 'suff'],
 		['dow jones industrial average', 'DIA', 'NASDAQ', 'none'],
 		['dow jones', 'DIA', 'NASDAQ', 'none'],
 		['nasdaq composite', 'QQQ', 'NASDAQ', 'none'],
-		['nasdaq', 'QQQ', 'NASDAQ', 'suff']
+		['nasdaq', 'QQQ', 'NASDAQ', 'suff'],
+		['the nasdaq', 'QQQ', 'NASDAQ', 'suff'],
+		['the s&p', 'SPY', 'NASDAQ', 'suff'],
+		['russell 2000', 'IWM', 'NASDAQ', 'suff'],
+		['the russell', 'IWM', 'NASDAQ', 'suff'],
 	]
 	
 	df = df[df.name != 'dow']
@@ -243,6 +248,13 @@ def add_nicknames(df):
 		['lululemon', 'LULU', 'NASDAQ', 'custom'],
 		['motorola', 'MSI', 'NYSE', 'custom'],
 		['merril lynch', 'IPB', 'AMEX', 'custom'],
+		['j.p morgan', 'JPM', 'NYSE', 'custom'],
+		['bitcoin', 'BTCC', 'TSX', 'custom'],
+		['bitcoin', 'BTC', 'NASDAQ', 'custom'],
+		['etherum', 'ETH', 'NASDAQ', 'custom'],
+		['ether', 'ETH', 'NASDAQ', 'custom'],
+		['goldman sachs', 'GS', 'NYSE', 'custom'],
+		['goldman', 'GS', 'NYSE', 'custom'],
 	]
 	df = pd.concat([
 		df,

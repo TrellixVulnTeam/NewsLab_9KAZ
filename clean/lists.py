@@ -133,6 +133,13 @@ SYNONYMS = [
     [" hldgs ", " holdings "],
     [" co ", " company "],
     [" pharma ", " pharmaceuticals "],
+    [" pharm ", " pharmaceuticals "],
+    [" finl ", " financial "],
+    [" therap ", " therapeutics "],
+    [" therapeu ", " therapeutics "],
+    [" grp ", " group "],
+    [" edu ", " education "],
+    [" assoc ", " associates "],
 ]
 
 SAFE_SUFF_SINGLES = [

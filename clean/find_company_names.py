@@ -15,9 +15,6 @@ exact_matches_dict = exact_matches.groupby('name')['ticker'].apply(list).to_dict
 PUNCS = '!"#$%\'*+,-./:;<=>?@[\\]^_`{|}~–’‘'
 APPOSTROPHES = "´’‘'’"
 
-# with open("data/items.json", "r") as file:
-#  	items = json.loads(file.read())
-
 ###################################################################################################
 
 def preprocess_target(title, ns_title):

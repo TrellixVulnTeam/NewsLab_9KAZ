@@ -26,6 +26,7 @@ IDSDIR = Path(f"{DIR}/ids")
 FMT = "%Y-%m-%d"
 
 news_sources = list(pd.read_csv(f"{DIR}/data/news_sources.csv").news_source)
+buzzwords = pd.read_csv(f"{DIR}/data/buzzwords.csv").fillna('')
 
 ###################################################################################################
 
@@ -113,7 +114,8 @@ def collect_news(job_id, company_names, id_cache, ids, errors):
 			logger.info(f"collecting {queries}, {progress}%")
 
 			ticker, company_name = data
-			fetch(ticker, id_cache, ids)
+			if ticker:
+				fetch(ticker, id_cache, ids)
 			fetch(company_name, id_cache, ids)
 
 	except Exception as e:
@@ -127,6 +129,9 @@ def main():
 
 	company_names = pd.read_csv(f"{DIR}/../clean/data/company_names.csv")
 	company_names = company_names[['ticker', 'name']]
+
+	company_names = pd.concat([company_names, buzzwords])
+	company_names = company_names.reset_index(drop=True)
 
 	chunks = np.array_split(company_names, 5)
 	id_cache, ids = get_id_cache()

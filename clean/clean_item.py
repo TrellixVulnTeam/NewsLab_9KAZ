@@ -342,7 +342,7 @@ def clean_item(item):
 		'language' : language,
 		'link' : item['link'].lower(),
 		'article_source' : item['article_source'].lower(),
-		'source' : source
+		'source' : source,
 	}
 
 	if is_og_rss and summary:

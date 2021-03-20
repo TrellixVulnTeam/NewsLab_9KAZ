@@ -3,8 +3,8 @@ from elasticsearch import Elasticsearch, helpers
 from const import DIR, CONFIG, logger
 from clean_item import clean_item
 from importlib import reload
+from hashlib import sha256
 from pathlib import Path
-from hashlib import md5
 import requests
 import shutil
 import sys, os
@@ -83,13 +83,10 @@ def cleaning_loop():
 			if not item.get("title"):
 				continue
 
+			_id = item['id']
+			_id = sha256(_id.encode()).hexdigest()
+
 			item = clean_item(item)
-			dummy_item = item.copy()
-			dummy_item.pop('acquisition_datetime')
-
-			_id = json.dumps(dummy_item, sort_keys = True)
-			_id = md5(_id.encode()).hexdigest()
-
 			new_items.append({
 				"_index" : "news",
 				"_id" : _id,
@@ -139,7 +136,7 @@ def cleaning_loop():
 		###########################################################################################
 
 		n_clean = n_clean_new
-		time.sleep(3)
+		time.sleep(5)
 
 if __name__ == '__main__':
 
