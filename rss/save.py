@@ -15,16 +15,13 @@ if __name__ == '__main__':
 
 	try:
 
-		filedate = datetime.now() - timedelta(days = 1)
-		filedate = filedate.strftime('%Y-%m-%d')
-
 		path = Path(f"{DIR}/news_data")
-		xz_file = Path(f"{DIR}/news_data_backup/{filedate}.tar.xz")
+		xz_file = Path(f"{DIR}/news_data_backup/{SDATE}.tar.xz")
 
 		n_items = len(list(path.iterdir()))
 		send_metric(CONFIG, "rss_count", "int64_value", n_items - 1)
 
-		n_unique = save_items(path, set(), filedate)
+		n_unique = save_items(path, set(), SDATE)
 		send_metric(CONFIG, "unique_rss_count", "int64_value", n_items)
 
 		send_to_bucket(
