@@ -184,7 +184,7 @@ def main():
 	backups = os.listdir(f"{DIR}/news_data_backup")
 	xz_file = Path(f"{DIR}/news_data_backup/{SDATE}.tar.xz")
 	
-	if now.hour >= 20 and not xz_file.exists():
+	if now.hour >= 10 and not xz_file.exists():
 
 		logger.info("news job, daily save")
 		n_items, n_unique = save_items(PATH, ids, SDATE)
