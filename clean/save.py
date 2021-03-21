@@ -11,7 +11,7 @@ from utils import send_to_bucket, send_metric, save_items
 def check_file(file, now):
 	ctime = file.stat().st_ctime
 	delta = (now - datetime.fromtimestamp(ctime))
-	return int(delta.seconds / 60) > 1
+	return int(delta.seconds / 60) > 3
 
 if __name__ == '__main__':
 
@@ -28,8 +28,8 @@ if __name__ == '__main__':
 		files.remove(raw_path / ".gitignore")
 
 		now = datetime.now()
-		files = [
-			file
+		[
+			file.unlink()
 			for file in files
 			if check_file(file, now)
 		]

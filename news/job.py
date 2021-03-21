@@ -1,5 +1,6 @@
 from const import DIR, DATE, SDATE, ENGINE, CONFIG, logger
 from datetime import datetime, timedelta
+from socket import gethostname
 import multiprocessing as mp
 from pathlib import Path
 from hashlib import md5
@@ -188,6 +189,10 @@ def main():
 
 		logger.info("news job, daily save")
 		n_items, n_unique = save_items(PATH, ids, SDATE)
+
+		if gethostname() != CONFIG['MACHINE']['HOSTNAME']:
+			CONFIG['GCP']['RAW_BUCKET'] = "tmp_items"
+			CONFIG['GCP']['RAW_VAULT'] = "tmp_items"
 
 		send_to_bucket(
 			CONFIG['GCP']['RAW_BUCKET'],

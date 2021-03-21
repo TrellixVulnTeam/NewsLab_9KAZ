@@ -44,8 +44,12 @@ def send_to_bucket(bucket_name, bucket_prefix, file, logger=None):
 
 		try:
 
+			blob_name = file.name
+			if bucket_prefix:
+				blob_name = f"{bucket_prefix}/{blob_name}"
+
 			bucket = STORAGE_CLIENT.bucket(bucket_name)
-			blob = bucket.blob(f"{bucket_prefix}/{file.name}")
+			blob = bucket.blob(blob_name)
 			blob.upload_from_filename(file, checksum="md5")
 			
 			logger.info(f"Upload to {bucket_name}/{bucket_prefix} successful. {storage_attempts} attempts.")
