@@ -47,7 +47,8 @@ def add_fields():
 		'link',
 		'updated',
 		'published',
-		'published_parsed'
+		'published_parsed',
+		'id'
 	]
 
 	def get_id(item):
@@ -69,7 +70,7 @@ def add_fields():
 		new_items = []
 		for item in items:
 
-			item['id'] = get_id(item.copy())
+			item['_id'] = get_id(item.copy())
 
 			if 'oscrap_acquisition_datetime' in item:
 				dt = item['oscrap_acquisition_datetime']
@@ -80,10 +81,16 @@ def add_fields():
 			else:
 				item['acquisition_datetime'] = "1970-01-01T00:00:00"
 
-			if 'title_detail' in item:
+			if 'oscrap_source' in item:
+				item['feed_source'] = item['oscrap_source']
+				del item['oscrap_source']
+			elif 'title_detail' in item:
 				item['feed_source'] = feeds.get(item['title_detail']['base'], [''])[0]
 			else:
 				item['feed_source'] = feeds.get(item['summary_detail']['base'], [''])[0]
+
+			if 'oscrap_source' in item:
+				print(item['oscrap_source'], item['feed_source'])
 
 			item['_source'] = 'rss'
 			new_items.append(item)
@@ -96,9 +103,31 @@ def rename():
 	for file in sorted((UZDIR / "rss").iterdir()):
 		file.rename(file.with_suffix(".json"))
 
+def remove_duplicates():
+
+	ids = set()
+	for file in sorted((UZDIR / "rss").iterdir()):
+
+		print(file.name)
+		with open(file, "r") as _file:
+			items = json.loads(_file.read())
+
+		new_items = []
+		for item in items:
+			if item['_id'] in ids:
+				continue
+			ids.add(item['_id'])
+			new_items.append(item)
+
+		print(len(items), len(new_items), len(items) - len(new_items))
+		print()
+
+		with open(file, "w") as _file:
+			_file.write(json.dumps(new_items))
+
 def compress():
 
-	for file in (UZDIR / "rss").iterdir():
+	for file in sorted((UZDIR / "rss").iterdir()):
 
 		print(file.name)
 		with tar.open(ZDIR / "rss" / (file.with_suffix(".tar.xz").name), "x:xz") as tar_file:
@@ -106,19 +135,22 @@ def compress():
 
 if __name__ == '__main__':
 
-	print("INIT DIRS")
-	init_dirs(RAWDIR)
-	init_dirs(UZDIR)
-	init_dirs(ZDIR)
+	# print("INIT DIRS")
+	# init_dirs(RAWDIR)
+	# init_dirs(UZDIR)
+	# init_dirs(ZDIR)
 
-	print("DOWNLOAD")
-	download()
+	# print("DOWNLOAD")
+	# download()
 
-	print("ADD FIELDS")
-	add_fields()
+	# print("ADD FIELDS")
+	# add_fields()
 
-	print("RENAME TO JSON")
-	rename()
+	# print("REMOVE DUPLICATES")
+	# remove_duplicates()
 
-	# print("COMPRESS")
-	# compress()
+	# print("RENAME TO JSON")
+	# rename()
+
+	print("COMPRESS")
+	compress()

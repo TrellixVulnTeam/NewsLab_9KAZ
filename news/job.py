@@ -192,7 +192,7 @@ def main():
 
 		if gethostname() != CONFIG['MACHINE']['HOSTNAME']:
 			CONFIG['GCP']['RAW_BUCKET'] = "tmp_items"
-			CONFIG['GCP']['RAW_VAULT'] = "tmp_items"
+			CONFIG['GCP']['RAW_VAULT'] = "tmp_items_vault"
 
 		send_to_bucket(
 			CONFIG['GCP']['RAW_BUCKET'],

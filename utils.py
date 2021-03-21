@@ -58,7 +58,7 @@ def send_to_bucket(bucket_name, bucket_prefix, file, logger=None):
 
 		except Exception as e:
 
-			logger.warning(f"Upload to {bucket_name}/{bucket_prefix} failed. {storage_attempts} attempts.")
+			logger.warning(f"Upload to {bucket_name}/{bucket_prefix} failed. {storage_attempts} attempts. {e}")
 			storage_attempts += 1
 
 	if storage_attempts >= max_tries:

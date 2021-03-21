@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
 	if gethostname() != CONFIG['MACHINE']['HOSTNAME']:
 		CONFIG['GCP']['RAW_BUCKET'] = "tmp_items"
-		CONFIG['GCP']['RAW_VAULT'] = "tmp_items"
+		CONFIG['GCP']['RAW_VAULT'] = "tmp_items_vault"
 
 	try:
 
