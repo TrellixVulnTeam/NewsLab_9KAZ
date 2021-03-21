@@ -38,7 +38,7 @@ def replace_special_cases(df):
 	df['name'] = df.name + " "
 
 	new_names = list(df.name)
-	new_names += list(df.name.str.replace("\\.com ", " "))
+	new_names += list(df.name.str.replace("\\.com ", " ", regex=True))
 	new_names += list(df.name.str.replace("'s ", "s "))
 	new_names += list(df.name.str.replace(" & ", " and "))
 	new_names += list(df.name.str.replace("-", " "))

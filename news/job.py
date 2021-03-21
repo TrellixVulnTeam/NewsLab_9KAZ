@@ -40,7 +40,8 @@ def get_id_cache():
         with open(file, "r") as _file:
             id_cache = json.loads(_file.read())
 
-        for date in id_cache.keys():
+        dates = list(id_cache.keys())
+        for date in dates:
 
             dt = datetime.strptime(date, FMT)
 
