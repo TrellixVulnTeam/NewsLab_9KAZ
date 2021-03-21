@@ -168,13 +168,13 @@ def remove_duplicates():
 		new_items = []
 		for item in items:
 
-			_id = item['id']
-			if _id in ids:
-				continue
-
 			article_source = item.get('source', {})
 			article_source = article_source.get('title')
 			if article_source not in news_sources:
+				continue
+
+			_id = item['id']
+			if _id in ids:
 				continue
 
 			ids.add(_id)
@@ -203,6 +203,7 @@ def add_fields():
 			item['acquisition_datetime'] = "1970-01-01T00:00:00"
 			item['_source'] = 'google'
 			item['search_query'] = ''
+			item['_id'] = item['id']
 
 		with open(file, "w") as _file:
 			_file.write(json.dumps(items))
@@ -220,19 +221,24 @@ def compress():
 
 if __name__ == '__main__':
 
-	init_dirs(RAWDIR)
-	init_dirs(UZDIR)
-	init_dirs(ZDIR)
+	# init_dirs(RAWDIR)
+	# init_dirs(UZDIR)
+	# init_dirs(ZDIR)
 
-	print("\n\n\n\n\n\nDOWNLOAD")
-	download()
+	# print("\n\n\n\n\n\nDOWNLOAD")
+	# download()
+	
 	print("\n\n\n\n\n\nNORMALIZE DFS")
 	normalize_dfs()
-	print("\n\n\n\n\n\nMERGE FILES")
-	merge_files()
-	print("\n\n\n\n\n\nRemove Duplicates")
-	remove_duplicates()
+	
+	# print("\n\n\n\n\n\nMERGE FILES")
+	# merge_files()
+
+	# print("\n\n\n\n\n\nRemove Duplicates")
+	# remove_duplicates()
+	
 	# print("\n\n\n\n\n\nAdd Fields")
 	# add_fields()
+	
 	# print("\n\n\n\n\n\nCompress")
 	# compress()
