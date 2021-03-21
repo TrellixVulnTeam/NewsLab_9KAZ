@@ -88,7 +88,7 @@ def download_company_names():
 
 	df = pd.concat(df)
 	df.columns = ['ticker', 'name', 'exchange']
-	df.sort_values('ticker').reset_index(drop=True)
+	df = df.sort_values('ticker').reset_index(drop=True)
 
 	###############################################################################################
 

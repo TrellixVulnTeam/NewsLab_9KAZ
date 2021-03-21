@@ -7,3 +7,4 @@ sentiment_model/
 *hash_cache.json
 clean/data/match.csv
 clean/matches.log
+*tmp/

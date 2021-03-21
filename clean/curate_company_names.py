@@ -328,6 +328,7 @@ def curate_company_names(company_names):
 	company_names = company_names.sort_values('ticker')
 	company_names = company_names.drop_duplicates().reset_index(drop=True)
 	logger.info(f"Drop dupes {company_names.shape}")
+
 	return company_names
 
 ###################################################################################################
