@@ -11,6 +11,8 @@ import sys, os
 import json
 import uuid
 
+###################################################################################################
+
 KEYS = [
 	'links',
 	'link',
@@ -28,6 +30,8 @@ def get_id(item):
 
 	_hash = json.dumps(item, sort_keys = True).encode()
 	return md5(_hash).hexdigest()
+
+###################################################################################################
 
 class Feeds(Thread):
 	
