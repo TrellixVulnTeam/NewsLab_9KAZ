@@ -16,7 +16,8 @@ KEYS = [
 	'link',
 	'updated',
 	'published',
-	'published_parsed'
+	'published_parsed',
+	'id'
 ]
 
 def get_id(item):
@@ -105,7 +106,7 @@ class Feeds(Thread):
 			entry['acquisition_datetime'] = datetime.now(tz=timezone.utc).isoformat()[:19]
 			entry['feed_source'] = self.source
 			entry['_source'] = 'rss'
-			entry['id'] = _id
+			entry['_id'] = _id
 
 			print(self.source)
 			self.entries.append(entry)

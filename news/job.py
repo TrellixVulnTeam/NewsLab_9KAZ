@@ -92,6 +92,7 @@ def fetch(query, id_cache, ids):
 		item['acquisition_datetime'] = datetime.now().isoformat()[:19]
 		item['search_query'] = query
 		item['_source'] = "google"
+		item['_id'] = _id
 		
 		items.append(item)
 

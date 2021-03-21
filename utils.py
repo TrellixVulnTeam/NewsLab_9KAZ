@@ -241,8 +241,8 @@ def save_items(path, ids, date):
 			for item in json.loads(_file.read()):
 
 				n_items += 1
-				_id = item.get('id', item.get('_id'))
-				if _id in ids or not _id:
+				_id = item['_id']
+				if _id in ids:
 					continue
 
 				ids.add(_id)

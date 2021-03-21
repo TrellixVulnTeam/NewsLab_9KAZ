@@ -84,8 +84,9 @@ def cleaning_loop():
 			if not item.get("title"):
 				continue
 
-			_id = item['id']
-			_id = sha256(_id.encode()).hexdigest()
+			_id = item['_id']
+			if item['_source'] == 'google':
+				_id = sha256(_id.encode()).hexdigest()
 
 			item = clean_item(item)
 			new_items.append({

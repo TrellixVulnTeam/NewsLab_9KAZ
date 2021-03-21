@@ -42,6 +42,23 @@ def download():
 
 def add_fields():
 
+	KEYS = [
+		'links',
+		'link',
+		'updated',
+		'published',
+		'published_parsed'
+	]
+
+	def get_id(item):
+
+		for key in KEYS:
+			if key in item:
+				item.pop(key)
+
+		_hash = json.dumps(item, sort_keys = True).encode()
+		return md5(_hash).hexdigest()
+
 	for file in sorted((UZDIR / "rss").iterdir()):
 
 		print(file.name)
@@ -51,6 +68,8 @@ def add_fields():
 
 		new_items = []
 		for item in items:
+
+			item['id'] = get_id(item.copy())
 
 			if 'oscrap_acquisition_datetime' in item:
 				dt = item['oscrap_acquisition_datetime']
@@ -87,16 +106,16 @@ def compress():
 
 if __name__ == '__main__':
 
-	# print("INIT DIRS")
-	# init_dirs(RAWDIR)
-	# init_dirs(UZDIR)
-	# init_dirs(ZDIR)
+	print("INIT DIRS")
+	init_dirs(RAWDIR)
+	init_dirs(UZDIR)
+	init_dirs(ZDIR)
 
-	# print("DOWNLOAD")
-	# download()
+	print("DOWNLOAD")
+	download()
 
-	# print("ADD FIELDS")
-	# add_fields()
+	print("ADD FIELDS")
+	add_fields()
 
 	print("RENAME TO JSON")
 	rename()
