@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from const import DIR, CONFIG, logger
+from const import SDATE, DIR, CONFIG, logger
 from traceback import format_exc
 from socket import gethostname
 from pathlib import Path
@@ -20,11 +20,8 @@ if __name__ == '__main__':
 
 	try:
 
-		filedate = datetime.now() - timedelta(days = 1)
-		filedate = filedate.strftime('%Y-%m-%d')
-
 		path = Path(f"{DIR}/clean_data")
-		xz_file = Path(f"{DIR}/clean_data_backup/{filedate}.tar.xz")
+		xz_file = Path(f"{DIR}/clean_data_backup/{SDATE}.tar.xz")
 
 		raw_path = Path(f"{DIR}/news_data")
 		files = list(raw_path.iterdir())
@@ -37,7 +34,7 @@ if __name__ == '__main__':
 			if check_file(file, now)
 		]
 
-		n_items, n_unique = save_items(path, set(), filedate)
+		n_items, n_unique = save_items(path, set(), SDATE)
 		send_metric(CONFIG, "clean_count", "int64_value", n_items)
 		send_metric(CONFIG, "unique_clean_count", "int64_value", n_unique)
 
