@@ -17,8 +17,7 @@ from utils import send_metric
 
 ###################################################################################################
 
-# ES_CLIENT = Elasticsearch(CONFIG['ES']['IP'], port=CONFIG['ES']['PORT'], http_comprress=True, timeout=30)
-ES_CLIENT = Elasticsearch()
+ES_CLIENT = Elasticsearch("localhost", port=CONFIG['ES']['PORT'], http_comprress=True, timeout=120)
 HEADERS = {"Content-Type" : "application/json"}
 
 NEWS_DIRS = [
