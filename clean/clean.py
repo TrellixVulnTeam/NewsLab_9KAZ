@@ -3,8 +3,8 @@ from elasticsearch import Elasticsearch, helpers
 from const import DIR, CONFIG, logger
 from clean_item import clean_item
 from importlib import reload
-from hashlib import sha256
 from pathlib import Path
+from hashlib import md5
 import requests
 import shutil
 import sys, os
@@ -85,7 +85,7 @@ def cleaning_loop():
 
 			_id = item['_id']
 			if item['_source'] == 'google':
-				_id = sha256(_id.encode()).hexdigest()
+				_id = md5(_id.encode()).hexdigest()
 
 			item = clean_item(item)
 			new_items.append({
