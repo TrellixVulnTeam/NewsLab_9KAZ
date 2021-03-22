@@ -155,9 +155,11 @@ def merge_files():
 
 def remove_duplicates():
 
-	hashs = set()
+	ids = set()
 	for file in sorted((UZDIR / "google").iterdir()):
 
+		source = 0
+		unique = 0
 		if '_' in file.name:
 			continue
 
@@ -171,16 +173,18 @@ def remove_duplicates():
 			article_source = item.get('source', {})
 			article_source = article_source.get('title')
 			if article_source not in news_sources:
+				source += 1
 				continue
 
 			_id = item['id']
 			if _id in ids:
+				unique += 1
 				continue
 
 			ids.add(_id)
 			new_items.append(item)
 
-		print(len(items), len(new_items))
+		print(len(items), len(new_items), source, unique)
 
 		with open(file, "w") as _file:
 			_file.write(json.dumps(new_items))
@@ -198,13 +202,17 @@ def add_fields():
 		with open(file, "r") as _file:
 			items = json.loads(_file.read())
 
+		n_items = 0
 		for item in items:
 
 			item['acquisition_datetime'] = "1970-01-01T00:00:00"
 			item['_source'] = 'google'
 			item['search_query'] = ''
 			item['_id'] = item['id']
+			n_items += 1
 
+		print(n_items)
+		print()
 		with open(file, "w") as _file:
 			_file.write(json.dumps(items))
 
@@ -228,8 +236,8 @@ if __name__ == '__main__':
 	# print("\n\n\n\n\n\nDOWNLOAD")
 	# download()
 	
-	print("\n\n\n\n\n\nNORMALIZE DFS")
-	normalize_dfs()
+	# print("\n\n\n\n\n\nNORMALIZE DFS")
+	# normalize_dfs()
 	
 	# print("\n\n\n\n\n\nMERGE FILES")
 	# merge_files()
@@ -240,5 +248,5 @@ if __name__ == '__main__':
 	# print("\n\n\n\n\n\nAdd Fields")
 	# add_fields()
 	
-	# print("\n\n\n\n\n\nCompress")
-	# compress()
+	print("\n\n\n\n\n\nCompress")
+	compress()

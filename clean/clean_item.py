@@ -71,6 +71,9 @@ def clean_google_item(item):
 
 	published_parsed = item.get('published_parsed')
 	if published_parsed:
+		if type(published_parsed) is str:
+			published_parsed = re.findall("=([0-9]+)[,)]", published_parsed)
+			published_parsed = tuple(int(param[1:-1]) for param in published_parsed)
 		iso = time.strftime('%Y-%m-%dT%H:%M:%S', tuple(published_parsed))
 		cleaned_item['published_parsed'] = iso
 

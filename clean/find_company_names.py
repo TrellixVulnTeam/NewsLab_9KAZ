@@ -1,12 +1,13 @@
 from lists import TARGET_FALSE_PRES, TARGET_FALSE_POSTS
 from nltk.tag import pos_tag
+from const import DIR
 import pandas as pd
 import time
 import json
 
 ###################################################################################################
 
-company_names = pd.read_csv("data/curated_company_names.csv")
+company_names = pd.read_csv(f"{DIR}/data/curated_company_names.csv")
 company_names_dict = company_names.groupby('name')['ticker'].apply(list).to_dict()
 
 exact_matches = company_names[company_names.type == 'none']
