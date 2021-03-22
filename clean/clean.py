@@ -84,7 +84,7 @@ def cleaning_loop():
 				continue
 
 			_id = item['_id']
-			if item['_source'] == 'google':
+			if item['_source'] == 'google' or item.get('feed_source') == 'Google':
 				_id = md5(_id.encode()).hexdigest()
 
 			item = clean_item(item)
