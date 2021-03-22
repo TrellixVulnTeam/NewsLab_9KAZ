@@ -188,7 +188,7 @@ def main():
 	if now.hour >= 10 and not xz_file.exists():
 
 		logger.info("news job, daily save")
-		n_items, n_unique = save_items(PATH, ids, SDATE)
+		n_items, n_unique = save_items(PATH, SDATE)
 
 		if gethostname() != CONFIG['MACHINE']['HOSTNAME']:
 			CONFIG['GCP']['RAW_BUCKET'] = "tmp_items"

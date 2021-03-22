@@ -231,12 +231,12 @@ def request(url, logger=None):
 	if tries >= max_tries:
 		raise Exception("Too many requests.")
 
-def save_items(path, ids, date):
+def save_items(path, date):
 
 	files = list(path.iterdir())
 	files.remove(path / ".gitignore")
 
-	items = []
+	items, ids = [], set()
 	n_items = 0
 	for file in files:
 		

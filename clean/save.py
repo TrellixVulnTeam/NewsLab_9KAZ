@@ -34,7 +34,7 @@ if __name__ == '__main__':
 			if check_file(file, now)
 		]
 
-		n_items, n_unique = save_items(path, set(), SDATE)
+		n_items, n_unique = save_items(path, SDATE)
 		send_metric(CONFIG, "clean_count", "int64_value", n_items)
 		send_metric(CONFIG, "unique_clean_count", "int64_value", n_unique)
 
