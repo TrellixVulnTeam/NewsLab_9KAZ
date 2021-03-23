@@ -89,8 +89,7 @@ def clean_google_item(item):
 	if title and article_source:
 		idx = title.rfind(f" - {article_source}")
 		if idx > -1:
-			title = title[:idx]
-			print(title)
+			cleaned_item['title'] = title[:idx]
 
 	return cleaned_item
 
