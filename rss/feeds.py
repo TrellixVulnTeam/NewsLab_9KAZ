@@ -107,7 +107,7 @@ class Feeds(Thread):
 			self.last[self.feed].append(_id)
 			self.last[self.feed] = self.last[self.feed][-self.WINDOW:]
 
-			entry['acquisition_datetime'] = datetime.now(tz=timezone.utc).isoformat()[:19]
+			entry['acquisition_datetime'] = datetime.utcnow().isoformat()[:19]
 			entry['feed_source'] = self.source
 			entry['_source'] = 'rss'
 			entry['_id'] = _id

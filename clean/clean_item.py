@@ -45,6 +45,8 @@ DATE_FMTS = [
 	"%Y-%m-%dT%H:%M:%S",
 ]
 
+###################################################################################################
+
 def parse_time(item, key):
     
     value = item.get(key)
@@ -54,13 +56,11 @@ def parse_time(item, key):
             value = (int(param) for param in value)
         return time.strftime('%Y-%m-%dT%H:%M:%S', tuple(value))
 
-###################################################################################################
-
 def clean_google_item(item):
 
 	cleaned_item = {
-		'search_query' : item['search_query'],
-		'_source' : item['_source']
+		'_source' : item['_source'],
+		'acquisition_datetime' : item['acquisition_datetime']
 	}
 
 	title = item.get('title')
@@ -125,10 +125,11 @@ def clean_item(item):
 	tables = []
 
 	source = item['_source']
-	if source == 'google':
+	fsource = item.get('feed_source')
+	if source == 'google' or fsource == 'Google':
 		item = clean_google_item(item)
-
-	is_og_rss = source == "rss" and item['feed_source'] != 'Google'
+	else:
+		item['article_source'] = item['feed_source']
 
 	###############################################################################################
 	## Link Cleaning
@@ -144,21 +145,9 @@ def clean_item(item):
 		item['link'] = item['link'].lower()
 
 	###############################################################################################
-	## Article Source
-
-	if source == "rss":
-
-		if item['feed_source'] == 'Google':
-			article_source = item.get('source', {})
-			article_source = article_source.get('title')
-			if article_source:
-				item['article_source'] = article_source
-		else:
-			item['article_source'] = item['feed_source']
-
-	###############################################################################################
 	## RSS Specific
 
+	is_og_rss = source == "rss" and fsource != 'Google'
 	if is_og_rss:
 
 		authors.append(item.get("author"))
@@ -338,7 +327,7 @@ def clean_item(item):
 	new_item = {
 		'title' : item['title'].strip(),
 		'published_datetime' : published_datetime,
-		'acquisition_datetime' : acquisition_datetime,
+		'acquisition_datetime' : item['acquisition_datetime'],
 		'link' : item['link'].lower(),
 		'article_source' : item['article_source'].lower(),
 		'source' : source,

@@ -108,7 +108,7 @@ def get_sentiment_scores():
 
 			if file in processed:
 				continue
-
+			time.sleep(15)
 			print("Processing", file.name)
 			with open(file, "r") as _file:
 				items = json.loads(_file.read())
@@ -130,7 +130,7 @@ def get_sentiment_scores():
 			processed.append(file)
 			print(len(processed))
 			print()
-			time.sleep(5)
+			time.sleep(10)
 
 if __name__ == '__main__':
 

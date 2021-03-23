@@ -17,7 +17,8 @@ from utils import send_metric
 
 ###################################################################################################
 
-ES_CLIENT = Elasticsearch(port=CONFIG['ES']['PORT'], http_comprress=True, timeout=120)
+# ES_CLIENT = Elasticsearch(port=CONFIG['ES']['PORT'], http_comprress=True, timeout=120)
+ES_CLIENT = Elasticsearch(port=9200, http_comprress=True, timeout=120)
 HEADERS = {"Content-Type" : "application/json"}
 
 NEWS_DIRS = [
@@ -87,7 +88,8 @@ def cleaning_loop():
 
 			dummy_item = {
 				'title' : item['title'],
-				'article_source' : item['article_source']
+				'article_source' : item['article_source'],
+				'published_datetime' : item['published_datetime'][:10]
 			}
 			if 'summary' in item:
 				dummy_item['summary'] = item['summary']
