@@ -181,7 +181,7 @@ def main():
 
 	###############################################################################################
 
-	now = datetime.now(pytz.timezone("Canada/Eastern"))
+	now = datetime.now()
 	backups = os.listdir(f"{DIR}/news_data_backup")
 	xz_file = Path(f"{DIR}/news_data_backup/{SDATE}.tar.xz")
 	
