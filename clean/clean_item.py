@@ -149,8 +149,6 @@ def clean_item(item):
 		else:
 			item['article_source'] = item['feed_source']
 
-		print(item['article_source'])
-
 	###############################################################################################
 	## RSS Specific
 
