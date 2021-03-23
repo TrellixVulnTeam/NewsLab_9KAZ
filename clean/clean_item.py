@@ -3,7 +3,6 @@ from find_company_names import find_company_names
 from urllib.parse import urlparse
 from const import DIR, logger
 from bs4 import BeautifulSoup
-from langid import classify
 from hashlib import sha256
 from pathlib import Path
 import pandas as pd
@@ -86,6 +85,12 @@ def clean_google_item(item):
 	source_href = source_href.get("href")
 	if source_href:
 		cleaned_item['source_href'] = source_href
+
+	if title and article_source:
+		idx = title.rfind(f" - {article_source}")
+		if idx > -1:
+			title = title[:idx]
+			print(title)
 
 	return cleaned_item
 
