@@ -85,9 +85,6 @@ ES_MAPPINGS = {
 				"tickers" : {
 					"type" : "keyword"
 				},
-				"language" : {
-					"type" : "keyword"
-				},
 				"categories" : {
 					"type" : "keyword"
 				},

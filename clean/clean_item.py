@@ -137,12 +137,22 @@ def clean_item(item):
 		item['link'] = item['link'].lower()
 
 	###############################################################################################
-	## RSS Specific
+	## Article Source
 
 	if source == "rss":
 
-		article_source = urlparse(item['link']).netloc
-		item['article_source'] = article_source.split(".")[1]
+		if item['feed_source'] == 'Google':
+			article_source = item.get('source', {})
+			article_source = article_source.get('title')
+			if article_source:
+				item['article_source'] = article_source
+		else:
+			item['article_source'] = item['feed_source']
+
+		print(item['article_source'])
+
+	###############################################################################################
+	## RSS Specific
 
 	if is_og_rss:
 
@@ -331,11 +341,6 @@ def clean_item(item):
 	published_datetime = published_datetime.isoformat()[:19]
 
 	###############################################################################################
-	## Language
-
-	language = item.get('language', classify(item['title'])[0])
-
-	###############################################################################################
 	## Create new object
 
 	new_item = {
@@ -355,7 +360,7 @@ def clean_item(item):
 	if ticker_matches:
 		for ticker in ticker_matches:
 			if ':' in ticker:
-				ticker_matches.append(ticker.split(':')[1])
+				ticker_matches.append(ticker.split(':')[1].strip())
 		new_item['tickers'] = list(set(ticker_matches))
 
 	if ticker_misses:

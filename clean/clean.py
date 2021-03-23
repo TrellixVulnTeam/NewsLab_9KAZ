@@ -17,7 +17,7 @@ from utils import send_metric
 
 ###################################################################################################
 
-ES_CLIENT = Elasticsearch("localhost", port=CONFIG['ES']['PORT'], http_comprress=True, timeout=120)
+ES_CLIENT = Elasticsearch(port=CONFIG['ES']['PORT'], http_comprress=True, timeout=120)
 HEADERS = {"Content-Type" : "application/json"}
 
 NEWS_DIRS = [
@@ -83,11 +83,16 @@ def cleaning_loop():
 			if not item.get("title"):
 				continue
 
-			_id = item['_id']
-			if item['_source'] == 'google' or item.get('feed_source') == 'Google':
-				_id = md5(_id.encode()).hexdigest()
-
 			item = clean_item(item)
+
+			dummy_item = {
+				'title' : item['title'],
+				'article_source' : item['article_source']
+			}
+			if 'summary' in item:
+				dummy_item['summary'] = item['summary']
+
+			_id = md5(json.dumps(dummy_item).encode()).hexdigest()
 			new_items.append({
 				"_index" : "news",
 				"_id" : _id,
