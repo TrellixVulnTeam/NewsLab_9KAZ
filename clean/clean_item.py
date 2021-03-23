@@ -3,7 +3,6 @@ from find_company_names import find_company_names
 from urllib.parse import urlparse
 from const import DIR, logger
 from bs4 import BeautifulSoup
-from langid import classify
 from pathlib import Path
 import pandas as pd
 import sys, os
@@ -90,6 +89,11 @@ def clean_google_item(item):
 	if source_href:
 		cleaned_item['source_href'] = source_href
 
+	if title and article_source:
+		idx = title.rfind(f" - {article_source}")
+		if idx > -1:
+			cleaned_item['title'] = title[:idx]
+
 	return cleaned_item
 
 def validate(match, hit, miss):
@@ -140,12 +144,20 @@ def clean_item(item):
 		item['link'] = item['link'].lower()
 
 	###############################################################################################
-	## RSS Specific
+	## Article Source
 
 	if source == "rss":
 
-		article_source = urlparse(item['link']).netloc
-		item['article_source'] = article_source.split(".")[1]
+		if item['feed_source'] == 'Google':
+			article_source = item.get('source', {})
+			article_source = article_source.get('title')
+			if article_source:
+				item['article_source'] = article_source
+		else:
+			item['article_source'] = item['feed_source']
+
+	###############################################################################################
+	## RSS Specific
 
 	if is_og_rss:
 
@@ -321,18 +333,12 @@ def clean_item(item):
 	published_datetime = published_datetime if published_datetime else DEFAULT_TIME
 
 	###############################################################################################
-	## Language
-
-	language = item.get('language', classify(item['title'])[0])
-
-	###############################################################################################
 	## Create new object
 
 	new_item = {
 		'title' : item['title'].strip(),
 		'published_datetime' : published_datetime,
 		'acquisition_datetime' : acquisition_datetime,
-		'language' : language,
 		'link' : item['link'].lower(),
 		'article_source' : item['article_source'].lower(),
 		'source' : source,
@@ -345,7 +351,7 @@ def clean_item(item):
 	if ticker_matches:
 		for ticker in ticker_matches:
 			if ':' in ticker:
-				ticker_matches.append(ticker.split(':')[1])
+				ticker_matches.append(ticker.split(':')[1].strip())
 		new_item['tickers'] = list(set(ticker_matches))
 
 	if ticker_misses:

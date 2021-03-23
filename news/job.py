@@ -181,11 +181,10 @@ def main():
 
 	###############################################################################################
 
-	now = datetime.now(pytz.timezone("Canada/Eastern"))
 	backups = os.listdir(f"{DIR}/news_data_backup")
 	xz_file = Path(f"{DIR}/news_data_backup/{SDATE}.tar.xz")
 	
-	if now.hour >= 10 and not xz_file.exists():
+	if datetime.now().hour >= 10 and not xz_file.exists():
 
 		logger.info("news job, daily save")
 		n_items, n_unique = save_items(PATH, SDATE)

@@ -3,8 +3,8 @@ from elasticsearch import Elasticsearch, helpers
 from const import DIR, CONFIG, logger
 from clean_item import clean_item
 from importlib import reload
-from hashlib import sha256
 from pathlib import Path
+from hashlib import md5
 import requests
 import shutil
 import sys, os
@@ -17,7 +17,7 @@ from utils import send_metric
 
 ###################################################################################################
 
-ES_CLIENT = Elasticsearch("localhost", port=CONFIG['ES']['PORT'], http_comprress=True, timeout=120)
+ES_CLIENT = Elasticsearch(port=CONFIG['ES']['PORT'], http_comprress=True, timeout=120)
 HEADERS = {"Content-Type" : "application/json"}
 
 NEWS_DIRS = [
@@ -83,11 +83,16 @@ def cleaning_loop():
 			if not item.get("title"):
 				continue
 
-			_id = item['_id']
-			if item['_source'] == 'google':
-				_id = sha256(_id.encode()).hexdigest()
-
 			item = clean_item(item)
+
+			dummy_item = {
+				'title' : item['title'],
+				'article_source' : item['article_source']
+			}
+			if 'summary' in item:
+				dummy_item['summary'] = item['summary']
+
+			_id = md5(json.dumps(dummy_item).encode()).hexdigest()
 			new_items.append({
 				"_index" : "news",
 				"_id" : _id,
