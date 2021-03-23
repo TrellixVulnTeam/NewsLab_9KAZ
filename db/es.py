@@ -1,7 +1,5 @@
-from const import RSS_FOLDER, CNBC_FOLDER, GOOGLE_FOLDER
-from const import CONFIG, SUBSET
-
 from elasticsearch import Elasticsearch, helpers
+from const import CONFIG, SUBSET
 import json
 
 ###################################################################################################
