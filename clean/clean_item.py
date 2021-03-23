@@ -4,10 +4,8 @@ from urllib.parse import urlparse
 from const import DIR, logger
 from bs4 import BeautifulSoup
 from langid import classify
-from hashlib import sha256
 from pathlib import Path
 import pandas as pd
-import dateparser
 import sys, os
 import time
 import uuid
@@ -48,6 +46,15 @@ DATE_FMTS = [
 	"%Y-%m-%dT%H:%M:%S",
 ]
 
+def parse_time(item, key):
+    
+    value = item.get(key)
+    if value:
+        if type(value) is str:
+            value = re.findall("=([0-9]+)[,)]", value)
+            value = (int(param) for param in value)
+        return time.strftime('%Y-%m-%dT%H:%M:%S', tuple(value))
+
 ###################################################################################################
 
 def clean_google_item(item):
@@ -71,11 +78,7 @@ def clean_google_item(item):
 
 	published_parsed = item.get('published_parsed')
 	if published_parsed:
-		if type(published_parsed) is str:
-			published_parsed = re.findall("=([0-9]+)[,)]", published_parsed)
-			published_parsed = tuple(int(param[1:-1]) for param in published_parsed)
-		iso = time.strftime('%Y-%m-%dT%H:%M:%S', tuple(published_parsed))
-		cleaned_item['published_parsed'] = iso
+		cleaned_item['published_parsed'] = published_parsed
 
 	article_source = item.get('source', {})
 	article_source = article_source.get('title')
@@ -309,26 +312,13 @@ def clean_item(item):
 
 	###############################################################################################
 	## Time Stuff
-
-	published_datetime = item.get('published', item.get('updated', DEFAULT_TIME))
-	try:
-		published_datetime = dateparser.parse(published_datetime, DATE_FMTS)
-		tz = (
-			timedelta(seconds=0) 
-			if not published_datetime.utcoffset()
-			else published_datetime.utcoffset()
-		)
-		published_datetime += tz
-		published_datetime = published_datetime.replace(tzinfo=None)
-	except Exception as e:
-		published_datetime = datetime.strptime(DEFAULT_TIME, DATE_FMTS[-1])
-		logger.warning(f"time conversion error,{e}")
-
-	acquisition_datetime = item.get('acquisition_datetime', DEFAULT_TIME)
-	acquisition_datetime = datetime.strptime(acquisition_datetime[:19], DATE_FMTS[-1])
-
-	acquisition_datetime = acquisition_datetime.isoformat()[:19]
-	published_datetime = published_datetime.isoformat()[:19]
+	    
+	published_datetime = (
+	    parse_time(item, 'published_parsed')
+	    if 'published_parsed' in item else
+	    parse_time(item, 'updated_parsed')
+	)
+	published_datetime = published_datetime if published_datetime else DEFAULT_TIME
 
 	###############################################################################################
 	## Language
