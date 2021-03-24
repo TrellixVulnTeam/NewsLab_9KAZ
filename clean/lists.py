@@ -55,7 +55,12 @@ SUFFIXES = [
     'incorporated',
     'co',
     'ft',
-    'intl'
+    'intl',
+    'gp',
+    'hld',
+    'hlds',
+    'n.v',
+    's.a',
 ]
 SUFFIXES.extend([
     f"{suffix}."
@@ -192,6 +197,56 @@ SAFE_MOD_SINGLES = [
     "arbor",
 ]
 
+DAYS = [
+     'sunday', 
+     'monday',
+     'tuesday',
+     'wednesday',
+     'thursday',
+     'friday',
+     'saturday'
+]
+
+MONTHS = [
+    'january',
+    'february',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'october',
+    'november',
+    'december'
+]
+
+SAFE_SUFF_SINGLES.extend(DAYS + MONTHS)
+SAFE_MOD_SINGLES.extend(DAYS + MONTHS)
+
+AMBIGUOUS_TICKERS = [
+    'CEO',
+    'ETN',
+    'PEG',
+    'TSN',
+    'TER',
+    'GOVT',
+    'NAV',
+    'TSE',
+    'IPO',
+    'EPS',
+    'CIO',
+    'CIA',
+    'GDP',
+    'IRR',
+    'CPI',
+    'CFO'
+]
+
+SAFE_SUFF_SINGLES.extend(AMBIGUOUS_TICKERS)
+SAFE_MOD_SINGLES.extend(AMBIGUOUS_TICKERS)
+
 SAFE_TWO_GRAMS = [
     'general electric',
     'general motors',
@@ -252,3 +307,7 @@ TARGET_FALSE_POSTS = [
     "slashed",
     "cut",
 ]
+
+
+
+

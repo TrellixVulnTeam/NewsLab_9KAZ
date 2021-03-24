@@ -255,6 +255,18 @@ def add_nicknames(df):
 		['ether', 'ETH', 'NASDAQ', 'custom'],
 		['goldman sachs', 'GS', 'NYSE', 'custom'],
 		['goldman', 'GS', 'NYSE', 'custom'],
+		['delta','DAL','NYSE','custom'],
+		['adobe','ADBE','NASDAQ','custom'],
+		['cisco','CSCO','NASDAQ','custom'],
+		['abbott','ABT','NYSE','custom'],
+		['micron','MU','NASDAQ','custom'],
+		['ferrari','RACE','NYSE','custom'],
+		['honda','HMC','NYSE','custom'],
+		['hershey','HSY','NYSE','custom'],
+		['molson coors','TAP','NYSE','custom'],
+		['lightspeed','LSPD','TSX','custom'],
+		['verizon','VZ','NYSE','custom'],
+		['baker hughes','BKR','NYSE','custom']
 	]
 	df = pd.concat([
 		df,
@@ -289,7 +301,7 @@ def curate_company_names(company_names):
 	logger.info(f"Modifier Duplicates {company_names.shape}")
 
 	## Final cleaning
-	exchanges = ["AMEX", "NASDAQ", "NYSE", "TSX", "LSE"]
+	exchanges = ["AMEX", "NASDAQ", "NYSE", "TSX", "TSXV", "LSE"]
 	company_names = company_names[company_names.exchange.isin(exchanges)]
 	logger.info(f"Exchange Filter {company_names.shape}")
 
