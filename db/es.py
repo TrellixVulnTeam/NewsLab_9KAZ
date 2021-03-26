@@ -1,5 +1,5 @@
 from elasticsearch import Elasticsearch, helpers
-from const import CONFIG, SUBSET
+from const import CONFIG, SUBSET, CLEANDIR
 import json
 
 ###################################################################################################
@@ -10,6 +10,18 @@ ES_MAPPINGS = {
 		"number_of_replicas": 0,
 		"analysis" : {
 			"analyzer" : {
+				"index_analyzer" : {
+					"tokenizer" : "classic",
+					"filter" : [	
+						"classic",
+						"lowercase",
+						"stop",
+						"trim",
+						"porter_stem",
+						"index_shingler",
+						"unique"
+					]
+				},
 				"search_analyzer" : {
 					"tokenizer" : "classic",
 					"filter" : [	
@@ -17,38 +29,37 @@ ES_MAPPINGS = {
 						"lowercase",
 						"stop",
 						"trim",
-						"length_limiter",
 						"porter_stem",
-						"shingler",
+						"search_shingler",
 						"unique"
 					]
 				}
+
 			},
 			"filter" : {
-				"length_limiter" : {
-					"type" : "length",
-					"min" : 2
-				},
-				"shingler" : {
+				"index_shingler" : {
 					"type" : "shingle",
 					"min_shingle_size" : 2,
-					"max_shingle_size" : 3
+					"max_shingle_size" : 3,
+					"output_unigrams" : True
+				},
+				"search_shingler" : {
+					"type" : "shingle",
+					"min_shingle_size" : 2,
+					"max_shingle_size" : 3,
+					"output_unigrams_if_no_shingles" : True,
+					"output_unigrams" : False
 				},
 			}
 		},
-		"similarity" : {
-           	"no_length_norm" : {
-               	"type" : "BM25",
-               	"b" : 0
-           	}
-        }
 	},
 	"mappings": {
 		"properties": {
 				"search" : {
 					"type" : "text",
-					"analyzer" : "search_analyzer",
-					"similarity" : "no_length_norm"
+					"analyzer" : "index_analyzer",
+					"search_analyzer" : "search_analyzer",
+					"similarity" : "boolean"
 				},
 				"title": {
 					"type" : "text"
@@ -109,39 +120,25 @@ ES_MAPPINGS = {
 
 def index():
 
-	es = Elasticsearch([f"{CONFIG['ES_IP']}:{CONFIG['ES_PORT']}"], timeout=60_000)
-	# es = Elasticsearch(timeout=60_000)
+	# es = Elasticsearch([f"{CONFIG['ES_IP']}:{CONFIG['ES_PORT']}"], timeout=60_000)
+	es = Elasticsearch(timeout=60_000)
 
-	if not SUBSET:
+	try:
+		es.indices.delete("news")
+	except Exception as e:
+		print(e)
 
-		try:
-			es.indices.delete("news")
-		except Exception as e:
-			print(e)
-
-		es.indices.create("news", ES_MAPPINGS)
-
-	files = list((RSS_FOLDER / "new").iterdir())
-	files += list((CNBC_FOLDER / "new").iterdir())
-	files += list((GOOGLE_FOLDER / "new").iterdir())
+	es.indices.create("news", ES_MAPPINGS)
 
 	items = []
 	total_indexed, total_failed = 0, 0
-	for i, file in enumerate(sorted(files)):
+	for i, file in enumerate(sorted(CLEANDIR.iterdir())):
 
 		print("Processing:", file.name)
-		if "_" in file.name:
-			sep, idx = "_", 2
-		else:
-			sep, idx = ".", 0
-
-		if SUBSET and file.name.split(sep)[idx] not in SUBSET:
-			continue
-
 		with open(file, "r") as _file:
 			items.extend(json.loads(_file.read()))
 
-		if i > 0 and i % 20 == 0:
+		if i > 0 and i % 40 == 0:
 
 			print("Indexing", len(items))
 

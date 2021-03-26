@@ -1,6 +1,7 @@
 from const import DIR, RAWDIR, RAW_BUCKET, CONFIG, CLEANDIR
 from joblib import delayed, Parallel
 from pathlib import Path
+from hashlib import md5
 import tarfile as tar
 import requests
 import json
@@ -37,37 +38,62 @@ def download():
 
 		filename.unlink()
 
+def clean(job_id, files, cleaner):
+
+	for file in sorted(files)[::-1]:
+
+		print(job_id, "rss_file", file.name)
+		with open(file, "r") as _file:
+			items = json.loads(_file.read())
+
+		news_file = file.parent.parent / "news" / file.name
+		if news_file.exists():
+			print(job_id, "news_file", news_file.name, len(items))
+			with open(news_file, "r") as _file:
+				items.extend(json.loads(_file.read()))
+			print(job_id, len(items))
+
+		clean_items = []
+		for i, item in enumerate(items[::-1]):
+
+			if not item.get('title'):
+				continue
+
+			clean_items.append(cleaner(item))
+
+		cleaner_items = []
+		ids = set()
+		for item in clean_items:
+
+			dummy_item = {
+				'title' : item['title'],
+				'article_source' : item['article_source'],
+				'published_datetime' : item['published_datetime'][:10]
+			}
+			if 'summary' in item:
+				dummy_item['summary'] = item['summary']
+
+			_id = md5(json.dumps(dummy_item).encode()).hexdigest()
+
+			if _id in ids:
+				continue
+
+			cleaner_items.append({
+				"_index" : "news",
+				"_id" : _id,
+				"_op_type" : "create",
+				"_source" : item
+			})
+
+		print(job_id, len(items), len(clean_items), len(cleaner_items))
+
+		with open(CLEANDIR / file.name, "w") as _file:
+			_file.write(json.dumps(cleaner_items))
+
 def clean_items():
 
 	if not CLEANDIR.exists():
 		CLEANDIR.mkdir()
-
-	def clean(job_id, files):
-
-		for file in sorted(files):
-
-			print(job_id, "rss_file", file.name)
-			with open(file, "r") as _file:
-				items = json.loads(_file.read())
-
-			news_file = file.parent.parent / "news" / file.name
-			if news_file.exists():
-				print(job_id, "news_file", news_file.name, len(items))
-				with open(news_file, "r") as _file:
-					items.extend(json.loads(_file.read()))
-				print(job_id, len(items))
-
-			clean_items = []
-			for i, item in enumerate(items[::-1]):
-
-				if not item.get('title'):
-					continue
-				clean_items.append(clean_item(item))
-
-			print(job_id, len(items), len(clean_items))
-
-			with open(CLEANDIR / file.name, "w") as _file:
-				_file.write(json.dumps(clean_items))
 
 	n_jobs = 12
 	files = list((RAWDIR / "rss").iterdir())
@@ -87,7 +113,7 @@ def clean_items():
 	]
 
 	Parallel(n_jobs=n_jobs)(
-		delayed(clean)(i, chunk)
+		delayed(clean)(i, chunk.copy(), clean_item)
 		for i, chunk in enumerate(chunks)
 	)
 
@@ -134,5 +160,6 @@ def get_sentiment_scores():
 
 if __name__ == '__main__':
 
-	# clean_items()
-	get_sentiment_scores()
+	# download()
+	clean_items()
+	# get_sentiment_scores()
