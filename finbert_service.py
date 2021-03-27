@@ -11,7 +11,7 @@ import os
 ###################################################################################################
 
 DIR = os.path.realpath(os.path.dirname(__file__))
-CHUNK_SIZE = 100
+CHUNK_SIZE = 25
 
 model = BertForSequenceClassification.from_pretrained(f"{DIR}/sentiment_model",
 													  num_labels=3,
