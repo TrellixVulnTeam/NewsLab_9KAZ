@@ -11,6 +11,8 @@ import sys
 sys.path.append(f"{DIR}/../clean")
 from clean_item import clean_item
 
+###################################################################################################
+
 def download():
 
 	if not RAWDIR.exists():
@@ -38,9 +40,14 @@ def download():
 
 		filename.unlink()
 
+###################################################################################################
+
 def clean(job_id, files, cleaner):
 
 	for file in sorted(files)[::-1]:
+
+		if file.name == '.gitignore':
+			continue
 
 		print(job_id, "rss_file", file.name)
 		with open(file, "r") as _file:
@@ -117,49 +124,74 @@ def clean_items():
 		for i, chunk in enumerate(chunks)
 	)
 
+###################################################################################################
+
+def get_scores(sentences, host):
+
+	data = {"sentences" : sentences}
+	response = requests.post(f"http://{host}:9602", headers={"Content-Type" : "application/json"}, json=data)
+	response = json.loads(response.content)
+	return response.values()
+
+def score_batch(job_id, files, get_scores, host):
+
+	for i, file in enumerate(files):
+
+		if file.name == '.gitignore:':
+			continue
+
+		print(job_id, "Processing", file.name)
+		with open(file, "r") as _file:
+			items = json.loads(_file.read())
+
+		if all('_source' in item and 'sentiment' in item['_source'] for item in items):
+			print(job_id, "Already Processed")
+			continue
+
+		titles = [
+			item['_source']['title']
+			for item in items
+		]
+		scores = get_scores(titles, host)
+
+		for item, score in zip(items, scores):
+			item['_source']['sentiment'] = score['prediction']
+			item['_source']['sentiment_score'] = score['sentiment_score']
+			item['_source']['abs_sentiment_score'] = abs(score['sentiment_score'])
+
+		with open(file, "w") as _file:
+			_file.write(json.dumps(items))
+
+		print(job_id, "Progress:", round(i / len(files) * 100, 2))
+
 def get_sentiment_scores():
 
-	def get_scores(sentences):
-
-		data = {"sentences" : sentences}
-		response = requests.post("http://192.168.2.186:9602", headers={"Content-Type" : "application/json"}, json=data)
-		response = json.loads(response.content)
-		return response.values()
-
-	processed = []
 	p = Path(f"{DIR}/clean_data")
-	while True:
+	files = list(p.iterdir())
+	
+	n = len(files)
+	chunks = [
+		files[:int(n/2)],
+		files[int(n/2):]
+	]
 
-		for file in p.iterdir():
+	Parallel(n_jobs=2)(
+		delayed(score_batch)(job_id, chunk, get_scores, host)
+		for job_id, (chunk, host) in enumerate(zip(chunks, ['localhost', '192.168.2.186']))
+	)
 
-			if file in processed:
-				continue
-			time.sleep(15)
-			print("Processing", file.name)
-			with open(file, "r") as _file:
-				items = json.loads(_file.read())
+def compress_files():
 
-			titles = [
-				item['title']
-				for item in items
-			]
-			scores = get_scores(titles)
-
-			for item, score in zip(items, scores):
-				item['sentiment'] = score['prediction']
-				item['sentiment_score'] = score['sentiment_score']
-				item['abs_sentiment_score'] = abs(score['sentiment_score'])
-
-			with open(file, "w") as _file:
-				_file.write(json.dumps(items))
-
-			processed.append(file)
-			print(len(processed))
-			print()
-			time.sleep(10)
+	p = Path(f"{DIR}/clean_data")
+	for file in p.iterdir():
+		print("Processing", file.name)
+		xz_file = file.with_suffix(".tar.xz")
+		with tar.open(xz_file, "x:xz") as tar_file:
+			tar_file.add(file, arcname=file.name)
 
 if __name__ == '__main__':
 
 	# download()
-	clean_items()
+	# clean_items()
 	# get_sentiment_scores()
+	compress_files()

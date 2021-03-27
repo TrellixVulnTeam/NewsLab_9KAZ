@@ -1,5 +1,6 @@
+from const import CONFIG, SUBSET, CLEANDIR, CLEAN_BUCKET
 from elasticsearch import Elasticsearch, helpers
-from const import CONFIG, SUBSET, CLEANDIR
+import tarfile as tar
 import json
 
 ###################################################################################################
@@ -118,10 +119,24 @@ ES_MAPPINGS = {
 
 ###################################################################################################
 
+def download():
+
+	if not CLEANDIR.exists():
+		CLEANDIR.mkdir()
+
+	for blob in CLEAN_BUCKET.list_blobs():
+
+		print(blob.name)
+		xz_file = CLEANDIR / blob.name
+		blob.download_to_filename(xz_file)
+		with tar.open(xz_file, "r:xz") as tar_file:
+			tar_file.extractall(CLEANDIR)
+		xz_file.unlink()
+
 def index():
 
-	# es = Elasticsearch([f"{CONFIG['ES_IP']}:{CONFIG['ES_PORT']}"], timeout=60_000)
-	es = Elasticsearch(timeout=60_000)
+	es = Elasticsearch([f"{CONFIG['ES_IP']}:{CONFIG['ES_PORT']}"], timeout=60_000)
+	# es = Elasticsearch(timeout=60_000)
 
 	try:
 		es.indices.delete("news")
@@ -138,7 +153,7 @@ def index():
 		with open(file, "r") as _file:
 			items.extend(json.loads(_file.read()))
 
-		if i > 0 and i % 40 == 0:
+		if i > 0 and i % 20 == 0:
 
 			print("Indexing", len(items))
 
@@ -174,4 +189,5 @@ def index():
 
 if __name__ == '__main__':
 
-	index()
+	download()
+	# index()

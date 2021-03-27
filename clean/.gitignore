@@ -1,3 +1,5 @@
 *__pycache__
 *.ipynb_checkpoints
 data/items.json
+data/company_names.csv
+data/curated_company_names.csv
