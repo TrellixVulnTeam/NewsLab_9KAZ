@@ -135,7 +135,7 @@ def download():
 
 def index():
 
-	es = Elasticsearch([f"{CONFIG['ES_IP']}:{CONFIG['ES_PORT']}"], timeout=60_000)
+	es = Elasticsearch([f"{CONFIG['ES']['IP']}:{CONFIG['ES']['PORT']}"], timeout=60_000)
 	# es = Elasticsearch(timeout=60_000)
 
 	try:
@@ -156,6 +156,10 @@ def index():
 		if i > 0 and i % 20 == 0:
 
 			print("Indexing", len(items))
+
+			for item in items:
+				if 'sentiment' not in item['_source']:
+					print("Fault", file.name)
 
 			indexed, failed = helpers.bulk(es,
 										   items,
@@ -189,5 +193,5 @@ def index():
 
 if __name__ == '__main__':
 
-	download()
-	# index()
+	# download()
+	index()
