@@ -70,7 +70,11 @@ def get_id_cache():
 def fetch(query, id_cache, ids):
 
 	url = URL.format(query = query.replace(' ', '+'))
-	feed_entries = feedparser.parse(url)
+	try:
+		feed_entries = feedparser.parse(url)
+	except Exception as e:
+		logger.warning(f"collection error on {query}.")
+		return
 
 	items = []
 	for item in feed_entries['entries']:
