@@ -97,6 +97,9 @@ def main(date):
 		send_metric(CONFIG, "news_stats_ticker_pre_count", "int64_value", pre_n)
 		send_metric(CONFIG, "news_stats_ticker_post_count", "int64_value", len(df))
 
+		if len(df) == 0:
+			raise Exception("Zero tickers after filtering")
+
 		df.to_csv(file, index=False)
 		with tar.open(xz_file, "x:xz") as tar_file:
 			tar_file.add(file, arcname=file.name)
@@ -120,6 +123,15 @@ def main(date):
 
 
 	logger.info("News Stats Terminated")
+
+def once():
+
+	s = datetime(2020, 4, 1)
+	now = datetime(2021, 8, 31)
+	while s < now:
+		main(s.isoformat()[:10])
+		s = s + timedelta(days=1)
+		print(s)
 
 if __name__ == '__main__':
 
