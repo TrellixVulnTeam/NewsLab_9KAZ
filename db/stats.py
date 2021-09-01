@@ -9,7 +9,7 @@ import sys, os
 sys.path.append(f"{DIR}/..")
 from utils import send_metric, send_to_bucket
 
-es = Elasticsearch(hosts=["35.203.28.83"], port=8607)
+es = Elasticsearch(port=8607)
 
 def get_data(date):
 
