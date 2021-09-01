@@ -13,8 +13,9 @@ es = Elasticsearch(port=8607)
 
 def get_data(date):
 
-	start = f"{date}T00:00:00"
-	end = f"{date}T23:59:59"
+	start = f"{(date - timedelta(days=2)).isoformat()[:10]}T21:00:00"
+	end = f"{(date - timedelta(days=1)).isoformat()[:10]}T20:59:59"
+	print(start, end)
 
 	query = {
 		"query" : {
@@ -85,7 +86,7 @@ def process_data(data):
 def main(date):
 
 	logger.info("News Stats Initiated")
-	file = Path(f"{DIR}/data/{date}.csv")
+	file = Path(f"{DIR}/data/{(date - timedelta(days=1)).isoformat()[:10]}.csv")
 	xz_file = file.with_suffix(".tar.xz")
 
 	try:
@@ -127,13 +128,12 @@ def main(date):
 def once():
 
 	s = datetime(2020, 4, 1)
-	now = datetime(2021, 8, 31)
+	now = datetime(2021, 9, 1)
 	while s < now:
-		main(s.isoformat()[:10])
+		main(s)
 		s = s + timedelta(days=1)
 		print(s)
 
 if __name__ == '__main__':
 
-	date = (datetime.now() - timedelta(days=1)).isoformat()[:10]
-	main(date)
+	main(datetime.now())
