@@ -15,7 +15,6 @@ def get_data(date):
 
 	start = f"{(date - timedelta(days=2)).isoformat()[:10]}T21:00:00"
 	end = f"{(date - timedelta(days=1)).isoformat()[:10]}T20:59:59"
-	print(start, end)
 
 	query = {
 		"query" : {
@@ -86,7 +85,8 @@ def process_data(data):
 def main(date):
 
 	logger.info("News Stats Initiated")
-	file = Path(f"{DIR}/data/{(date - timedelta(days=1)).isoformat()[:10]}.csv")
+	datestr = (date - timedelta(days=1)).isoformat()[:10]
+	file = Path(f"{DIR}/data/{datestr}.csv")
 	xz_file = file.with_suffix(".tar.xz")
 
 	try:
@@ -94,6 +94,9 @@ def main(date):
 		logger.info(f"Processing stats for {date}")
 		
 		pre_n, df = process_data(get_data(date))
+		df['date'] = datestr
+		df = df[['date', 'ticker', 'volume', 'sentiment']]
+
 		logger.info(f"Processed stats for {len(df)} tickers. Collected {pre_n} items.")
 		send_metric(CONFIG, "news_stats_ticker_pre_count", "int64_value", pre_n)
 		send_metric(CONFIG, "news_stats_ticker_post_count", "int64_value", len(df))
@@ -128,11 +131,11 @@ def main(date):
 def once():
 
 	s = datetime(2020, 4, 1)
-	now = datetime(2021, 9, 1)
+	now = datetime(2021, 9, 2)
 	while s < now:
 		main(s)
 		s = s + timedelta(days=1)
-		print(s)
+		print(s.isoformat()[:10])
 
 if __name__ == '__main__':
 
