@@ -36,7 +36,7 @@ def get_data(date):
 				} 
 			},
 		},
-		"size" : 10_000,
+		"size" : 1_000,
 		"_source" : ["tickers", "sentiment_score"]
 		
 	}
