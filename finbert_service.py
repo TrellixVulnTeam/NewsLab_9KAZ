@@ -48,7 +48,7 @@ def predict(sentences):
 	result = pd.DataFrame(columns=['sentence','logit','prediction','sentiment_score'])
 	for i, batch in enumerate(chunks(sentences, CHUNK_SIZE)):
 
-		print("Progress:", i * CHUNK_SIZE / len(sentences))
+		print(f"{datetime.now().isoformat()} - Progress:", i * CHUNK_SIZE / len(sentences))
 
 		examples = [InputExample(str(i), sentence) for i, sentence in enumerate(batch)]
 
