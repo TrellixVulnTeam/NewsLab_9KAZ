@@ -191,7 +191,15 @@ def index():
 	print("Total Indexed:", total_indexed)
 	print("Total Failed:", total_failed)
 
+def delete():
+
+	for i, file in enumerate(sorted(CLEANDIR.iterdir())):
+
+		print("Deleting", file)
+		file.unlink()
+
 if __name__ == '__main__':
 
 	# download()
-	index()
+	# index()
+	delete()
