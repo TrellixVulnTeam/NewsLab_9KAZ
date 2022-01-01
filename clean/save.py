@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 		send_to_bucket(
 			CONFIG['GCP']['CLEAN_BUCKET'],
-			'',
+			'news',
 			xz_file,
 			logger=logger
 		)
