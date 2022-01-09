@@ -11,8 +11,8 @@ DIR = os.path.realpath(os.path.dirname(__file__))
 with open(f"{DIR}/../news_config.json", "r") as file:
 	CONFIG = json.loads(file.read())
 
-RAWDIR = Path(f"{DIR}/raw_data")
-CLEANDIR = Path(f"{DIR}/clean_data")
+RAWDIR = Path(f"{DIR}/rdata")
+CLEANDIR = Path(f"{DIR}/cdata")
 
 CREDS = Credentials.from_service_account_file(os.environ.get(CONFIG['GCP']['ENV_CREDS_KEY']))
 STORAGE_CLIENT = storage.Client(credentials=CREDS)

@@ -1,4 +1,4 @@
-from const import CONFIG, SUBSET, CLEANDIR, CLEAN_BUCKET
+from const import CONFIG, CLEANDIR, CLEAN_BUCKET
 from elasticsearch import Elasticsearch, helpers
 import tarfile as tar
 import json
@@ -23,6 +23,18 @@ ES_MAPPINGS = {
 						"unique"
 					]
 				},
+				"search_analyzer_no_unigrams" : {
+					"tokenizer" : "classic",
+					"filter" : [	
+						"classic",
+						"lowercase",
+						"stop",
+						"trim",
+						"porter_stem",
+						"search_shingler_no_unigrams",
+						"unique"
+					]
+				},
 				"search_analyzer" : {
 					"tokenizer" : "classic",
 					"filter" : [	
@@ -42,24 +54,31 @@ ES_MAPPINGS = {
 					"type" : "shingle",
 					"min_shingle_size" : 2,
 					"max_shingle_size" : 3,
+					"output_unigrams_if_no_shingles" : True,
 					"output_unigrams" : True
+				},
+				"search_shingler_no_unigrams" : {
+					"type" : "shingle",
+					"min_shingle_size" : 2,
+					"max_shingle_size" : 3,
+					"output_unigrams_if_no_shingles" : False,
+					"output_unigrams" : False
 				},
 				"search_shingler" : {
 					"type" : "shingle",
 					"min_shingle_size" : 2,
 					"max_shingle_size" : 3,
 					"output_unigrams_if_no_shingles" : True,
-					"output_unigrams" : False
+					"output_unigrams" : True
 				},
 			}
 		},
 	},
 	"mappings": {
-		"properties": {
+		"properties": {	
 				"search" : {
 					"type" : "text",
 					"analyzer" : "index_analyzer",
-					"search_analyzer" : "search_analyzer",
 					"similarity" : "boolean"
 				},
 				"title": {
@@ -117,26 +136,17 @@ ES_MAPPINGS = {
 		}
 	}
 
+CHUNKS = {
+	"tweets": 80,
+	"news": 20
+}
+
 ###################################################################################################
-
-def download():
-
-	if not CLEANDIR.exists():
-		CLEANDIR.mkdir()
-
-	for blob in CLEAN_BUCKET.list_blobs():
-
-		print(blob.name)
-		xz_file = CLEANDIR / blob.name
-		blob.download_to_filename(xz_file)
-		with tar.open(xz_file, "r:xz") as tar_file:
-			tar_file.extractall(CLEANDIR)
-		xz_file.unlink()
 
 def index():
 
-	es = Elasticsearch([f"{CONFIG['ES']['IP']}:{CONFIG['ES']['PORT']}"], timeout=60_000)
-	# es = Elasticsearch(timeout=60_000)
+	# es = Elasticsearch([f"{CONFIG['ES']['IP']}:{CONFIG['ES']['PORT']}"], timeout=60_000)
+	es = Elasticsearch(timeout=60_000)
 
 	try:
 		es.indices.delete("news")
@@ -147,32 +157,37 @@ def index():
 
 	items = []
 	total_indexed, total_failed = 0, 0
-	for i, file in enumerate(sorted(CLEANDIR.iterdir())):
 
-		print("Processing:", file.name)
-		with open(file, "r") as _file:
-			items.extend(json.loads(_file.read()))
+	for folder in CLEANDIR.iterdir():
 
-		if i > 0 and i % 20 == 0:
+		if folder.name == '.gitignore': continue
 
-			print("Indexing", len(items))
+		for i, file in enumerate(sorted(folder.iterdir())):
 
-			for item in items:
-				if 'sentiment' not in item['_source']:
-					print("Fault", file.name)
+			print("Processing:", file.name)
+			with open(file, "r") as _file:
+				items.extend(json.loads(_file.read()))
 
-			indexed, failed = helpers.bulk(es,
-										   items,
-										   stats_only=True,
-										   raise_on_error=False)
+			if i > 0 and i % CHUNKS[folder.name] == 0:
 
-			print("Indexed:", indexed)
-			print("Failed:", failed)
+				print("Indexing", len(items))
 
-			total_indexed += indexed
-			total_failed += failed
+				for item in items:
+					if 'sentiment' not in item['_source']:
+						print("Fault", file.name)
 
-			items = []
+				indexed, failed = helpers.bulk(es,
+											   items,
+											   stats_only=True,
+											   raise_on_error=False)
+
+				print("Indexed:", indexed)
+				print("Failed:", failed)
+
+				total_indexed += indexed
+				total_failed += failed
+
+				items = []
 
 	print("Final Indexing", len(items))
 	if len(items) != 0:
@@ -191,15 +206,6 @@ def index():
 	print("Total Indexed:", total_indexed)
 	print("Total Failed:", total_failed)
 
-def delete():
-
-	for i, file in enumerate(sorted(CLEANDIR.iterdir())):
-
-		print("Deleting", file)
-		file.unlink()
-
 if __name__ == '__main__':
 
-	# download()
-	# index()
-	delete()
+	index()
