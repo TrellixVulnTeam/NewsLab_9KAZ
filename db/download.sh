@@ -12,6 +12,3 @@ for f in $files
 do
 	tar xvf $f -C $HOME/NewsLab/db/cdata/tweets
 done
-
-rm -rf $HOME/NewsLab/db/tdata/tweets/*
-rm -rf $HOME/NewsLab/db/tdata/news/*
