@@ -2,6 +2,7 @@ from elasticsearch.helpers.errors import BulkIndexError
 from elasticsearch import Elasticsearch, helpers
 from const import DIR, CONFIG, logger
 from clean_item import clean_item
+from datetime import datetime
 from importlib import reload
 from pathlib import Path
 from hashlib import md5
@@ -111,6 +112,7 @@ def cleaning_loop():
 				item['_source']['title']
 				for item in new_items
 			]
+			print(f"{datetime.now().isoformat()} - Scoring {len(new_items)} Files.")
 			scores = get_scores(titles)
 
 			for item, score in zip(new_items, scores):
