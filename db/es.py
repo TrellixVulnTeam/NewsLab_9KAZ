@@ -5,6 +5,12 @@ import json
 
 ###################################################################################################
 
+ES_CLIENT = Elasticsearch(
+	"http://{USER}:{KEY}@{HOST}:{PORT}".format(**CONFIG['ES']),
+	http_comprress=True,
+	timeout=10000
+)
+
 ES_MAPPINGS = {
 	"settings": {
 		"number_of_shards": 1,
@@ -145,15 +151,12 @@ CHUNKS = {
 
 def index():
 
-	# es = Elasticsearch([f"{CONFIG['ES']['IP']}:{CONFIG['ES']['PORT']}"], timeout=60_000)
-	es = Elasticsearch(timeout=60_000)
-
 	try:
-		es.indices.delete("news")
+		ES_CLIENT.indices.delete("news")
 	except Exception as e:
 		print(e)
 
-	es.indices.create("news", ES_MAPPINGS)
+	ES_CLIENT.indices.create("news", ES_MAPPINGS)
 
 	items = []
 	total_indexed, total_failed = 0, 0
@@ -176,7 +179,7 @@ def index():
 					if 'sentiment' not in item['_source']:
 						print("Fault", file.name)
 
-				indexed, failed = helpers.bulk(es,
+				indexed, failed = helpers.bulk(ES_CLIENT,
 											   items,
 											   stats_only=True,
 											   raise_on_error=False)

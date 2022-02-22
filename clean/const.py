@@ -6,7 +6,6 @@ import json
 import os
 
 DIR = os.path.realpath(os.path.dirname(__file__))
-
 with open(f"{DIR}/../news_config.json", "r") as file:
 	CONFIG = json.loads(file.read())
 
