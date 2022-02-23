@@ -9,7 +9,11 @@ import sys, os
 sys.path.append(f"{DIR}/..")
 from utils import send_metric, send_to_bucket
 
-es = Elasticsearch(port=8607, timeout=60_000)
+ES_CLIENT = Elasticsearch(
+	"http://{USER}:{KEY}@{HOST}:{PORT}".format(**CONFIG['ES']),
+	http_comprress=True,
+	timeout=10000
+)
 
 def get_data(date):
 
