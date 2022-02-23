@@ -45,12 +45,12 @@ def get_data(date):
 		
 	}
 
-	response = es.search(query, index="news", scroll="3m")
+	response = ES_CLIENT.search(query, index="news", scroll="3m")
 	items = response['hits']['hits']
 
 	while len(response['hits']['hits']) > 0:
 
-		response = es.scroll(scroll_id = response.get("_scroll_id"), scroll="3m")
+		response = ES_CLIENT.scroll(scroll_id = response.get("_scroll_id"), scroll="3m")
 		items.extend(response['hits']['hits'])
 
 	return [item['_source'] for item in items]
