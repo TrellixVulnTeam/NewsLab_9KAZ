@@ -10,7 +10,7 @@ sys.path.append(f"{DIR}/..")
 from utils import send_metric, send_to_bucket
 
 ES_CLIENT = Elasticsearch(
-	"http://{USER}:{KEY}@{HOST}:{PORT}".format(**CONFIG['ES']),
+	"http://{USER}:{KEY}@{HOST}:{PORT}".format(**CONFIG['ES_READER']),
 	http_comprress=True,
 	timeout=10000
 )
