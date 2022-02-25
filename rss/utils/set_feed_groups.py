@@ -19,7 +19,8 @@ groups = [
     ["Google"],
     ["CNBC", "Investing"],
     ["BBC", "Wall Street Journal"],
-    ["MarketWatch", "Yahoo Finance", "Bank of Canada", "Bank of England", "NewsBTC", "CoinTelegraph", "CoinDesk"]
+    ["MarketWatch", "Yahoo Finance", "Bank of Canada", "Bank of England"],
+    ["NewsBTC", "CoinTelegraph", "CoinDesk", "MarketBeat"]
 ]
 
 ## Get group sleep values

@@ -248,3 +248,5 @@ Google,https://news.google.com/rss/search?q=site:financialpost.com+when:1h&hl=en
 NewsBTC,https://www.newsbtc.com/feed/
 CoinTelegraph,https://cointelegraph.com/rss
 CoinDesk,https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml
+MarketBeat,https://www.marketbeat.com/rss.ashx?type=headlines
+MarketBeat,https://www.marketbeat.com/rss.ashx?type=originals
