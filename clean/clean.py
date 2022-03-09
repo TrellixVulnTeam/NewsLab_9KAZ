@@ -56,6 +56,32 @@ def get_scores(sentences):
 	response = json.loads(response.content)
 	return response.values()
 
+def filter_by_exists(client, items):
+    cids = [item['_id'] for item in items]
+    indexed_items = client.search({
+        "query": {
+            "ids": {
+                "values": cids
+            }
+        },
+        "_source": False,
+        "size": 10_000
+    })
+    iids = [item['_id'] for item in indexed_items['hits']['hits']]
+    return [
+        item
+        for item in items
+        if item['_id'] not in iids
+    ]
+
+def filter(client, new_items):
+	chunk_size = 9999
+	chunks = [
+		filter_by_exists(client, new_items[i - chunk_size: i])
+		for i in range(chunk_size, len(new_items) + chunk_size, chunk_size)
+	]
+	return [item for chunk in chunks for item in chunk]
+
 def cleaning_loop():
 
 	ctr = 0
@@ -84,7 +110,6 @@ def cleaning_loop():
 
 		new_items = []
 		for item in items:
-
 			if not item.get("title"):
 				continue
 
@@ -105,6 +130,9 @@ def cleaning_loop():
 				"_op_type" : "create",
 				"_source" : item
 			})
+
+		if len(new_items) > 50:
+			new_items = filter(ES_CLIENT, new_items)
 
 		if len(new_items) != 0:
 

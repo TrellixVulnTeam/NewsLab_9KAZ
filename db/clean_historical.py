@@ -31,6 +31,8 @@ def download():
 
 		if not name:
 			continue
+		if name != '2022-02-25.tar.xz':
+			continue
 
 		filename = RAWDIR / parent / name
 		blob.download_to_filename(filename)
@@ -94,7 +96,7 @@ def clean(job_id, files, cleaner):
 
 		print(job_id, len(items), len(clean_items), len(cleaner_items))
 
-		with open(CLEANDIR / file.name, "w") as _file:
+		with open(CLEANDIR / "news" / file.name, "w") as _file:
 			_file.write(json.dumps(cleaner_items))
 
 def clean_items():
@@ -102,8 +104,9 @@ def clean_items():
 	if not CLEANDIR.exists():
 		CLEANDIR.mkdir()
 
-	n_jobs = 12
+	n_jobs = 2
 	files = list((RAWDIR / "rss").iterdir())
+	files += list((RAWDIR / "news").iterdir())
 	files = sorted(files)
 	print(len(files))
 	files = [
@@ -166,23 +169,25 @@ def score_batch(job_id, files, get_scores, host):
 
 def get_sentiment_scores():
 
-	p = Path(f"{DIR}/clean_data")
+	p = Path(f"{DIR}/cdata/news")
 	files = list(p.iterdir())
+	files.remove(p / ".gitignore")
 	
 	n = len(files)
 	chunks = [
 		files[:int(n/2)],
 		files[int(n/2):]
 	]
+	chunks = [files]
 
-	Parallel(n_jobs=2)(
+	Parallel(n_jobs=1)(
 		delayed(score_batch)(job_id, chunk, get_scores, host)
-		for job_id, (chunk, host) in enumerate(zip(chunks, ['localhost', '192.168.2.186']))
+		for job_id, (chunk, host) in enumerate(zip(chunks, ['localhost']))
 	)
 
 def compress_files():
 
-	p = Path(f"{DIR}/clean_data")
+	p = Path(f"{DIR}/cdata/news")
 	for file in p.iterdir():
 		print("Processing", file.name)
 		xz_file = file.with_suffix(".tar.xz")
