@@ -167,6 +167,8 @@ def index():
 
 		for i, file in enumerate(sorted(folder.iterdir())):
 
+			if file.name == ".gitignore": continue
+
 			print("Processing:", file.name)
 			with open(file, "r") as _file:
 				items.extend(json.loads(_file.read()))
