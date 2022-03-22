@@ -180,7 +180,7 @@ def cleaning_loop():
 		###########################################################################################
 
 		ctr += 1
-		time.sleep(5)
+		time.sleep(2)
 		n_clean = n_clean_new
 
 if __name__ == '__main__':
