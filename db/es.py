@@ -197,7 +197,7 @@ def index():
 	print("Final Indexing", len(items))
 	if len(items) != 0:
 
-		indexed, failed = helpers.bulk(es,
+		indexed, failed = helpers.bulk(ES_CLIENT,
 									   items,
 									   stats_only=True,
 									   raise_on_error=False)
