@@ -328,7 +328,7 @@ def clean_item(item):
 		'title' : item['title'].strip(),
 		'published_datetime' : published_datetime,
 		'acquisition_datetime' : item['acquisition_datetime'],
-		'link' : item['link'].lower(),
+		'link' : item.get('link', '').lower(),
 		'article_source' : item['article_source'].lower(),
 		'source' : source,
 	}
