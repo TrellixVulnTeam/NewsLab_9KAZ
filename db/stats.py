@@ -115,8 +115,8 @@ def get_ticker_info():
 
 	df = pd.read_csv(csv_file)
 
-	os.unlink(csv_file)
-	os.unlink(tar_file)
+	os.unlink(csv_file.__str__())
+	os.unlink(xz_file.__str__())
 	return df
 
 def create_sector_tickers(volume, info):
@@ -175,8 +175,8 @@ def main(date):
 			logger=logger
 		)
 
-		os.unlink(file)
-		os.unlink(xz_file)
+		os.unlink(file.__str__())
+		os.unlink(xz_file.__str__())
 
 		send_metric(CONFIG, "news_stats_success_indicator", "int64_value", 1)
 
