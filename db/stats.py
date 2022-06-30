@@ -111,7 +111,7 @@ def get_ticker_info():
 
 	blob.download_to_filename(xz_file)
 	with tar.open(xz_file, "r:xz") as tar_file:
-		tar_file.extractall()
+		tar_file.extractall(path=DIR)
 
 	df = pd.read_csv(csv_file)
 
