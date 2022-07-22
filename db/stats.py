@@ -14,6 +14,21 @@ ES_CLIENT = Elasticsearch(
 	http_comprress=True,
 	timeout=10000
 )
+sector_to_ticker = {
+	'Consumer Cyclical': 'SECTORY',
+	'Technology': 'SECTORK',
+	'Communication Services': 'SECTORC',
+	'Healthcare': 'SECTORV',
+	'Industrials': 'SECTORI',
+	'Consumer Defensive': 'SECTORD',
+	'Financial Services': 'SECTORF',
+	'Energy': 'SECTORE',
+	'Utilities': 'SECTORU',
+	'Real Estate': 'SECTORRE',
+	'Basic Materials': 'SECTORB',
+	'Industrial Goods': 'SECTORIG',
+	'Services': 'SECTORS',
+}
 
 def get_data(date):
 
@@ -84,7 +99,44 @@ def process_data(data):
 	df.columns = ['ticker', 'volume', 'sentiment']
 	df['sentiment'] = df.sentiment.round(4)
 
-	return pre_n, df.sort_values('volume', ascending=False)
+	return pre_n, df
+
+def get_ticker_info():
+
+	for blob in STORAGE_CLIENT.bucket("daily_ticker_info2").list_blobs():
+		pass
+
+	csv_file = Path(f"{DIR}/{blob.name.split('.')[0]}.csv")
+	xz_file = csv_file.with_suffix(".tar.xz")
+
+	blob.download_to_filename(xz_file)
+	with tar.open(xz_file, "r:xz") as tar_file:
+		tar_file.extractall(path=DIR)
+
+	df = pd.read_csv(csv_file)
+
+	os.unlink(csv_file.__str__())
+	os.unlink(xz_file.__str__())
+	return df
+
+def create_sector_tickers(volume, info):
+
+	usectors = info.sector.dropna().unique()
+	sectors = info[['ticker', 'sector']].merge(volume, how='left', on='ticker').dropna()
+	sectors = sectors.groupby('sector').agg({'sentiment': 'mean', 'volume': 'sum'}).reset_index()
+	sectors = pd.concat([
+		sectors,
+		pd.DataFrame([
+			[sector, 0, 0]
+			for sector in usectors
+			if sector not in sectors.sector.unique()
+		], columns = ['sector', 'sentiment', 'volume'])
+	]).sort_values('volume', ascending=False).reset_index(drop=True)
+	sectors['ticker'] = sectors.sector.map(sector_to_ticker)
+	return pd.concat([
+		volume,
+		sectors[['ticker', 'sentiment', 'volume']]
+	]).sort_values('volume', ascending=False).reset_index(drop=True)
 
 def main(date):
 
@@ -98,7 +150,11 @@ def main(date):
 		logger.info(f"Processing stats for {date}")
 		
 		pre_n, df = process_data(get_data(date))
+		df = create_sector_tickers(df, get_ticker_info())
+		pre_n += len(sector_to_ticker)
+
 		df['date'] = datestr
+		df['volume'] = df.volume.astype(int)
 		df = df[['date', 'ticker', 'volume', 'sentiment']]
 
 		logger.info(f"Processed stats for {len(df)} tickers. Collected {pre_n} items.")
@@ -119,8 +175,8 @@ def main(date):
 			logger=logger
 		)
 
-		os.unlink(file)
-		os.unlink(xz_file)
+		os.unlink(file.__str__())
+		os.unlink(xz_file.__str__())
 
 		send_metric(CONFIG, "news_stats_success_indicator", "int64_value", 1)
 
@@ -135,7 +191,7 @@ def main(date):
 def once():
 
 	s = datetime(2020, 4, 1)
-	now = datetime(2021, 9, 2)
+	now = datetime(2022, 5, 23)
 	while s < now:
 		main(s)
 		s = s + timedelta(days=1)
