@@ -1,5 +1,5 @@
 gsutil cp gs://clean_items/news/2022-07-21.tar.xz $HOME/NewsLab/db/tdata/news/
-gsutil cp gs://clean_items/tweets/news_2022-07-21 00-00-01 $HOME/NewsLab/db/tdata/tweets/
+gsutil cp cp gs://clean_items/tweets/news_2022-07-21 00-00-01 $HOME/NewsLab/db/tdata/tweets/
 
 files="$HOME/NewsLab/db/tdata/news/*"
 for f in $files
