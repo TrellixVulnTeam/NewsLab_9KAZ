@@ -6,7 +6,7 @@ import json
 ###################################################################################################
 
 ES_CLIENT = Elasticsearch(
-	"http://{USER}:{KEY}@{HOST}:{PORT}".format(**CONFIG['ES_WRITER']),
+	"http://{USER}:{KEY}@{HOST}:{PORT}".format(**CONFIG['ES_ELASTIC']),
 	http_comprress=True,
 	timeout=10000
 )
