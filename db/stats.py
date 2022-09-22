@@ -80,7 +80,7 @@ def process_data(data):
 	x = df.tickers.str.split(":", expand=True)
 	df['tickers'] = x[1].combine_first(x[0])
 	df['tickers'] = df.tickers.str.strip()
-	df = df[df.tickers.str[0].str.isalpha()]
+	df = df[df.tickers.str[0].str.isalpha().astype(bool)]
 	df = df.drop_duplicates(subset=['item', 'tickers'])
 
 	x = df.item.value_counts()
