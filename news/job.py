@@ -22,6 +22,7 @@ from utils import send_metric, send_to_bucket, save_items
 ###################################################################################################
 
 URL = "https://news.google.com/rss/search?q={query}+when:1h&hl=en-CA&gl=CA&ceid=CA:en"
+
 PATH = Path(f"{DIR}/news_data")
 IDSDIR = Path(f"{DIR}/ids")
 FMT = "%Y-%m-%d"
@@ -99,7 +100,7 @@ def fetch(query, id_cache, ids):
 		item['search_query'] = query
 		item['_source'] = "google"
 		item['_id'] = _id
-		
+
 		items.append(item)
 
 	if len(items) == 0:

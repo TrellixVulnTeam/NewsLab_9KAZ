@@ -1,0 +1,434 @@
+TD,Exchange Name,Location,Region,EXCH,MIC,Asset,Acronym
+,,,,,,,
+Y,A2X Markets,ZA,AMA,AJ,A2XX,Eq,A2X
+Y,AIAF Mercado De Renta Fija,ES,WEA,,XDRF,FI,
+Y,APX Group,NL,WEA,,,,
+Y,APX Power NL,NL,WEA,,NLPX,Idx,
+Y,APX Power UK,GB,WEA,,UKPX,"Der,Idx",
+Y,ASX 24 (formerly Sydney Futures Exchange),AU,APA,,XSFE,Der,ASX24
+Y,ASX Group,AU,APA,,XASX,,
+Y,ATHEX,GR,WEA,,ASEX,,
+Y,ATHEX APA,GR,WEA,XT,ASEX,"Der,Eq,FI",
+Y,Abu Dhabi Securities Exchange,AE,AMA,DH,XADS,"Eq,Idx",ADX
+Y,Alpha Toronto,CA,NAA,TA,XATS,"Eq,FI",
+Y,Alpha Venture,CA,NAA,TN,XATS,"Eq,FI",
+Y,Alternate Investment Market,GB,WEA,,AIMX,Eq,AIM
+Y,Amman Stock Exchange,JO,AMA,JR,XAMM,"Eq,FI,Idx",ASE
+Y,Angola Stock Exchange,,,,,Eq,
+Y,Aquis Exchange,GB,WEA,QX,AQXE,Eq,
+Y,Aquis Exchange SA (EU Segment),,,QE,AQEU,Eq,
+Y,Asia Pacific Exchange,SG,APA,,APEX,Der,APEX
+Y,Asset Match MTF,GB,WEA,A0,SHAR,Eq,
+Y,Astana International Exchange,KZ,APA,KX,AIXK,"Eq,FI",AIX
+Y,Astana International Exchange,KZ,APA,KX,AIXK,"Eq,FI",AIX
+Y,Asuncion Bolsa Valores,PY,LAA,PN,XVPA,"Eq,FI",BVPASA
+Y,Athens Derivatives Exchange,GR,WEA,,XADE,Der,ADEX
+Y,Athens Exchange Alternative Market,GR,WEA,AA,ENAX,Eq,EN.A
+Y,Athens Stock Exchange,GR,WEA,"GA, XT","ASEX, HOTC, XADE, XATH, XIPO","Der,Eq,FI,Idx",ASE
+Y,Australian Securities Exchange,AU,APA,AT,"ASXB, ASXC, ASXP, ASXT, ASXV, XASX, XSFE","Der,Eq,FI,Idx",ASX
+Y,B3 Derivatives,BR,LAA,,BVMF,"Der,FI",B3
+Y,B3 Equity,BR,LAA,"BN, BS",BVMF,"Eq,FI,Idx",B3
+N,B3 Soma,BR,LAA,BO,XSOM,"Eq,FI",SOMA
+Y,BIVA Exchange,,,MU,BIVA,"Eq,FI",BIVA
+Y,BME APA,ES,WEA,XQ,BMEX,"Der,Eq,FI",BME
+Y,BME Electronic Outcry Market,ES,WEA,SN,XMAD,Eq,
+Y,BME Fixed Income,ES,WEA,,MERF,FI,
+Y,BSE India,IN,APA,IB,"BSME, XBOM",,BSE
+Y,BVB Group,RO,EEA,,XBSE,,
+Y,BX Swiss,CH,WEA,,XBRN,,
+Y,BX Worldcaps,CH,WEA,BW,XBRN,Eq,
+Y,BZX Options,US,NAA,,BATO,Der,
+Y,Bahamas International Securities Exchange,BS,LAA,BM,XBAA,"Eq,Idx",BISX
+Y,Bahrain Bourse,BH,AMA,BI,XBAH,"Eq,Idx",BHB
+Y,Baltic Exchange,GB,WEA,,BALT,Idx,Baltex
+Y,Banja Luka Stock Exchange,BA,EEA,BK,XBLB,"Eq,FI,Idx",BLSE
+Y,Barbados Stock Exchange,BB,LAA,BA,XBAB,"Eq,Idx",BSE
+Y,Beirut Stock Exchange,LB,AMA,LB,XBEY,"Eq,FI",BSE
+Y,Belgrade Stock Exchange,RS,EEA,SG,XBEL,"Eq,FI,Idx",BELEX
+Y,Berlin Stock Exchange,DE,WEA,GB,XBER,"Der,Eq,FI",
+Y,Bermuda Stock Exchange,BM,LAA,BH,XBDA,"Eq,FI,Idx",BSX
+Y,BlockMatch,GB,WEA,B3,BLOX,"Eq,FI",
+Y,Bloomberg APA,BG,EEA,,BAPA,"Der,FI",BBG
+Y,Bloomberg MTF,BG,EEA,B2,BMTF,"Der,Eq,FI",BBG
+Y,Boerse Frankfurt Certificates and Warrants,DE,WEA,,XSCO,FI,
+Y,Bolsa De Valores De Caracas,VE,LAA,VS,BVCA,"Eq,Idx",CSE
+Y,Bolsa Electronica de Chile,CL,LAA,CE,XBCL,Eq,BOLCHILE
+Y,Bolsa Electronica de Valores de Uruguay,UY,LAA,,BVUR,FI,BEVSA
+Y,Bolsa Nacional de Valores Costa Rica,CR,LAA,CR,XBNV,"Eq,FI,Idx",BNV
+Y,Bolsa de Comercio de Santiago de Chile,CL,LAA,CC,XSGO,"Der,Eq,FI,Idx",
+Y,Bolsa de Valores de Colombia,CO,LAA,CX,XBOG,"Der,Eq,FI,Idx",BVC
+Y,Bolsa de Valores de Quito,EC,LAA,EQ,XQUI,"Eq,FI",
+N,Bolsas y Mercados Argentinos (BYMA),AR,LAA,AF,"XBUE, XMEV","Der,Eq,FI,Idx",BYMA
+Y,Bolsas y Mercados Espanoles,ES,WEA,,BMEX,,
+Y,Borsa Istanbul,TR,AMA,TI,"XDSM, XEQY, XFNO, XIST, XPMS",,BIST
+Y,Borsa Italiana,IT,WEA,IM,"ETFP, MIVX, MOTX, MTAA, MTAH, SEDX, XAIM, XDMI, XMIL, XMOT","Der,Eq,FI,Idx",
+Y,Boston Options Exchange,US,NAA,,XBOX,Der,BOX
+Y,Botswana Stock Exchange,BW,AMA,BG,"BOTE, BOTV, XBOT","Eq,FI,Idx",BSE
+Y,Boursa Kuwait,KW,AMA,KK,XKUW,"Eq,Idx",BK
+Y,Bourse Africa,MU,AMA,,GBOT,Der,GBOT
+Y,Bourse Regionale des Valeurs Mobilieres,CI,AMA,BC,XBRV,"Eq,Idx",BRVM
+Y,Brasil Bolsa Balcão (B3),BR,LAA,,BVMF,,
+Y,Bratislava Stock Exchange,SK,EEA,SK,XBRA,"Eq,FI,Idx",BSSE
+Y,Bucharest Stock Exchange,RO,EEA,RE,"XBSD, XBSE, XCAN, XRAS","Der,Eq,FI,Idx",BVB
+Y,Budapest Stock Exchange,HU,EEA,HB,XBUD,"Der,Eq,FI,Idx",
+Y,Budapest Stock Exchange APA,HU,EEA,XH,XBUD,"Der,Eq,FI",
+Y,Bulgarian Stock Exchange,BG,EEA,BU,"ABUL, XBUL","Eq,FI,Idx",BSE
+Y,Bursa Malaysia,MY,APA,MK,"MESQ, XKLS","Der,Eq,FI,Idx",MK
+Y,CBOE BXE,GB,WEA,EB,"BATE, BATP",Eq,
+Y,CBOE CXE,GB,WEA,IX,CHIX,Eq,CHI-X
+Y,CME Globex,US,NAA,,GLBX,Der,CME
+Y,CME Group,US,NAA,,XCME,,
+Y,CNSX Markets,CA,NAA,,XCNQ,,
+Y,COMEX,US,NAA,,XCEC,Der,COMEX
+Y,Cambodia Securities Exchange,KH,APA,KH,XCSX,"Eq,Idx",CSX
+Y,Canadian Securities Exchange,CA,NAA,CF,"PURE, XCNQ",Eq,CSE
+Y,Casablanca Stock Exchange,MA,AMA,MC,XCAS,"Eq,FI,Idx",
+Y,Cayman Islands Stock Exchange,KY,LAA,KY,XCAY,"Der,Eq,FI",CSX
+Y,Cboe BXE,US,NAA,,BATS,,
+Y,Cboe BXE Europe,NL,WEA,E2,"BEUE, BEUP",Eq,
+Y,Cboe BXTR Trade Reporting Services - APA,GB,WEA,XV,BATF,Eq,
+Y,Cboe BYX Exchange,US,NAA,VY,BATY,Eq,BATS
+Y,Cboe BZX Exchange,US,NAA,UF,"BATO, BATS, BATY, BYXD, BZXD","Der,Eq,Idx",BATS
+Y,Cboe C2 Options Exchange,US,NAA,,C2OX,Der,C2
+Y,Cboe DXE,NL,WEA,I2,CEUX,Eq,DXE
+Y,Cboe Europe,GB,WEA,,"BATD, BATP, BCXE, CHID",,
+Y,Cboe Futures Exchange,US,NAA,,XCBF,Der,CFE
+Y,Cboe Options Exchange,US,NAA,,XCBO,"Der,Idx",CBOE
+Y,Cboe Parent,US,NAA,,XCBO,,
+Y,Cboe Trade Reporting Services - EU APA,NL,WEA,X2,CAPA,Eq,
+Y,Central European Gas Hub AG,AT,WEA,,XCEG,Der,CEGH
+Y,Chi-X Australia,AU,APA,AH,CHIA,Eq,CXA
+Y,Chi-X Global,US,NAA,,,,
+Y,Chi-X Japan,JP,APA,JI,"CHIJ, CHIS, CHIV, KAIX",Eq,
+Y,Chicago Board of Trade,US,NAA,,XCBT,Der,CBOT
+Y,Chicago Mercantile Exchange,US,NAA,,XCME,"Der,Idx",CME
+Y,China Financial Futures Exchange,CN,APA,,CCFX,Der,CFFEX
+Y,Chittagong Stock Exchange,BD,APA,C3,XCHG,Eq,CSE
+Y,Clearing Corporation of India,IN,APA,,CDSL,"Der,FI",CCIL
+Y,Colombo Stock Exchange,LK,APA,SL,XCOL,"Eq,FI,Idx",CSE
+Y,CurveGlobal,GB,WEA,,XLOD,Der,
+Y,Cyprus Stock Exchange,CY,AMA,"CY, YC","XCYO, XCYS, XECM","Eq,FI,Idx",CSE
+Y,Dalian Commodity Exchange,CN,APA,,XDCE,Der,DCE
+N,Damascus Securities Exchange,SY,AMA,SY,XDSE,"Eq,Idx",DSE
+Y,Dansk OTC,DK,WEA,DD,DKTC,Eq,
+Y,Dar Es Salaam Stock Exchange,TZ,AMA,TZ,XDAR,"Eq,FI,Idx",DSE
+Y,Deutsche APA,DE,WEA,XD,DAPA,"Der,Eq,FI",DB
+Y,Deutsche Boerse Tradegate,DE,WEA,TH,"TGAT, XGAT, XGRM","Eq,FI",
+Y,Deutsche Borse,DE,WEA,,XFRA,,DB
+Y,Dhaka Stock Exchange,BD,APA,BD,XDHA,"Eq,FI,Idx",DSE
+Y,Direct Edge,US,NAA,,EDGE,,
+Y,Douala Stock Exchange,CM,AMA,DE,XDSX,Eq,DSX
+Y,Dubai Financial Market,AE,AMA,DB,XDFM,"Eq,FI,Idx",DFM
+Y,Dubai Gold and Commodities Exchange,AE,AMA,,DGCX,Der,DGCX
+Y,Dubai Mercantile Exchange,AE,AMA,,DUMX,Der,DME
+Y,Dusseldorf Stock Exchange,DE,WEA,GD,XDUS,"Eq,FI",
+Y,EDGA Exchange,US,NAA,VJ,"EDDP, EDGA, EDGE, EDGO, EDGX",Eq,EDGA
+Y,EDGX Exchange,US,NAA,VK,EDGX,"Eq,FI",EDGX
+Y,EPEX Spot,FR,WEA,,EPEX,Idx,EPEX
+Y,ETS Eurasian Trading System,KZ,APA,,ETSC,Der,ETS
+Y,Egyptian Exchange,EG,AMA,EC,XCAI,"Eq,FI,Idx",EGX
+Y,Energy Exchange Austria,AT,WEA,,EXAA,Der,EXAA
+Y,Equiduct Trading,DE,WEA,BQ,XEQT,Eq,
+Y,Eris Exchange,US,NAA,,ERIS,Der,
+Y,Ethiopia Commodity Exchange,ET,AMA,,,Der,ECX
+Y,Eurex,DE,WEA,,XEUR,"Der,FI",
+Y,Euro Global MTS,GB,WEA,,LMTS,FI,
+Y,Euro MTF,LU,WEA,,EMTF,"Eq,FI",
+Y,EuroCredit MTS,GB,WEA,,CMTS,FI,
+Y,EuroMTS,GB,WEA,,EBMX,"FI,Idx",EMTS
+Y,EuroTLX,IT,WEA,TE,ETLX,"Eq,FI",
+Y,Euronext,GB,WEA,,,,
+Y,Euronext APA,GB,WEA,XE,XBRU,"Der,Eq,FI",
+Y,Euronext Amsterdam,NL,WEA,,"TNLA, XAMS, XEUC, XEUE, XEUI","Der,Eq,FI,Idx",
+Y,Euronext Block MTF,GB,WEA,XM,XSMP,Eq,
+Y,Euronext Brussels,BE,WEA,BB,"ALXB, ENXB, MLXB, TNLB, VPXB, XBDA, XBRU","Der,Eq,FI,Idx",
+Y,Euronext Dublin,IE,WEA,ID,XESM,Eq,
+Y,Euronext Lisbon,PT,WEA,PL,"ALXL, ENXL, MFOX, OMIP, WQXL, XLIS","Der,Eq,FI,Idx",
+Y,Euronext London,GB,WEA,LD,XLDN,Eq,
+Y,Euronext Paris,FR,WEA,FP,"ALXP, MTCH, XMAT, XMLI, XMON, XPAR, XSPM","Der,Eq,FI,Idx",
+Y,European Energy Exchange,DE,WEA,,XEEE,,EEX
+Y,European Warrant Exchange,DE,WEA,GW,EUWX,"Eq,FI,Idx",EUWAX
+Y,FINRA ADF,US,NAA,UD,"FINN, FINO, FINR, FINY, XADF","Eq,FI",
+Y,First North Copenhagen,DK,WEA,DF,"DCSE, DNDK, FNDK, MCSE, MNDK, XCSE",Eq,
+Y,First North Helsinki,FI,WEA,FF,FNFI,Eq,
+Y,First North Iceland,IS,WEA,RF,"DICE, DNIS, FNIS, MICE, MNIS, XICE",Eq,
+Y,First North Stockholm,SE,WEA,SF,"FNSE,ONSE","Eq,FI",
+Y,Fish Pool ASA,NO,WEA,,FISH,Der,
+Y,Frankfurt Stock Exchange,DE,WEA,GF,"XFRA,FRAA,FRAB","Eq,FI,Idx",FWB
+Y,Fukuoka Stock Exchange,JP,APA,JF,XFKA,Eq,FSE
+Y,Georgia Stock Exchange,GE,EEA,GG,XGSE,"Eq,FI",GSE
+Y,Gettex Exchange,DE,WEA,GZ,MUND,"Eq,FI",
+Y,Ghana Stock Exchange,GH,AMA,GN,XGHA,"Eq,FI,Idx",GSE
+Y,Gilt Edged Market Makers Association,GB,WEA,,GEMX,FI,GEMMA
+Y,Hamburg Stock Exchange,DE,WEA,GH,XHAM,"Eq,FI",
+Y,Hanoi Exchange,VN,APA,,HSTC,,
+Y,Hanoi Stock Exchange,VN,APA,VH,"HSTC, XHNX","Der,Eq,FI,Idx",HNX
+Y,Hanoi UPCoM,VN,APA,VU,XHNX,Eq,
+Y,Hanover Stock Exchange,DE,WEA,GI,XHAN,"Eq,FI",
+Y,Hi-MTF,IT,WEA,HM,"HMOD, HMTF, HRFQ","Eq,FI",
+Y,Ho Chi Minh Stock Exchange,VN,APA,VM,XSTC,"Eq,FI,Idx",HOSE
+Y,Hong Kong Futures Exchange,HK,APA,,XHKF,Der,HKFE
+Y,Hong Kong Stock Exchange,HK,APA,HK,"XHKG,XGEM","Eq,FI,Idx",SEHK
+Y,Hungarian Power Exchange,HU,EEA,,"HUPX, HUDX",Der,HUPX
+Y,ICE Endex,NL,WEA,,NDEX,Der,
+Y,ICE Futures Canada,CA,NAA,,IFCA,Der,ICE
+Y,ICE Futures Europe - Commodities,GB,WEA,,"IFLX, IFEU, IFEN, IFUT",Der,ICE
+Y,ICE Futures Europe - Financials,GB,WEA,,"IFLL, IFEU, IFLO",Der,
+Y,ICE Futures Singapore,SG,APA,,IFSG,Der,IFSG
+Y,ICE Futures US,US,NAA,,IFUS,"Der,Idx",ICE
+Y,IEX,US,NAA,VF,IEXG,Eq,IEX
+Y,ISE Gemini,US,NAA,,GMNI,Der,
+Y,ISE Mercury,US,NAA,UJ,MCRY,Eq,
+Y,ITG Posit,IE,WEA,PO,XPOS,Eq,
+Y,India International Exchange IFSC,IN,APA,,IINX,Der,INX
+Y,Indonesia Commodity and Derivatives Exchange,ID,APA,,ICDX,Der,ICDX
+Y,Indonesia Stock Exchange,ID,APA,IJ,XIDX,"Eq,FI,Idx",IDX
+Y,Instinet Canada Cross,CA,NAA,TW,XICX,Eq,ICX
+Y,Intercontinental Exchange,GB,WEA,,IEPA,,ICE
+Y,International Maritime Exchange,NO,WEA,,XIMA,Der,IMAREX
+Y,International Securities Exchange,US,NAA,,XISX,Der,ISE
+Y,Iraq Stock Exchange,IQ,AMA,IQ,XIQS,Eq,ISX
+Y,Irish Stock Exchange,IE,WEA,,"XATL, XDUB, XESM, XEYE, XMSM","Eq,FI,Idx",ISE
+Y,JSE Ltd,ZA,AMA,,XJSE,,
+Y,Jakarta Futures Exchange,ID,APA,,XBBJ,Der,JFX
+Y,Jamaica Stock Exchange,JM,LAA,JA,XJAM,"Eq,FI,Idx",JSE
+Y,Japan Exchange Group,JP,APA,,XJPX,,
+Y,Japan Securities Dealers Association,JP,APA,JJ,,"Eq,FI",JSDA
+Y,Japannext,JP,APA,JE,"SBIJ, SBIU, SBIV, XSBI",Eq,
+Y,Japannext U-Market,JP,APA,JW,SBIU,Eq,SBIU
+Y,Japannext X-Market,JP,APA,JU,XSBI,Eq,SBIX
+Y,Johannesburg Stock Exchange,ZA,AMA,SJ,"ALTX, XBES, XJSE, XSAF, XSFA, YLDX, ZFXM","Der,Eq,FI,Idx",JSE
+Y,K-OTC,KR,APA,KF,XKFB,Eq,K-OTC
+Y,KONEX,KR,APA,KE,XKON,"Eq,Idx",KONEX
+Y,KOSDAQ,KR,APA,KQ,XKOS,"Eq,FI,Idx",KOSDAQ
+Y,KOSPI Stock Market,KR,APA,KP,XKRX,"Eq,FI,Idx",KRX SM
+Y,KRX Derivatives Market,KR,APA,,XKFE,Der,KRX FM
+Y,Kazakhstan Stock Exchange,KZ,APA,KZ,XKAZ,"Der,Eq,FI,Idx",KASE
+Y,Korea Exchange,KR,APA,,"XKCM, XKEM, XKFE, XKON, XKOS, XKRX",,KRX SM
+Y,Korea Exchange Emissions Market,KR,APA,,XKEM,Der,KRX EM
+Y,LMAX,GB,WEA,,LMAX,"FI,Idx",LMAX
+Y,Lao Securities Exchange,LA,APA,LS,XLAO,"Eq,Idx",LSX
+Y,Lima Stock Exchange,PE,LAA,PE,XLIM,"Eq,FI,Idx",BVL
+Y,Liquidnet,GB,WEA,L3,"LICA, LIQF, LIQH, LIQU",Eq,
+Y,Liquidnet - EU,GB,WEA,L1,LEUE,Eq,
+Y,Liquidnet Canada,CA,NAA,TK,LICA,Eq,
+Y,Ljubljana Stock Exchange,SI,EEA,SV,XLJU,"Eq,FI,Idx",LJSE
+Y,London Bullion Market,GB,WEA,,XLBM,Der,
+Y,London Derivatives Exchange Group,GB,WEA,,GMEG,Der,LDX
+Y,London Metal Exchange,GB,WEA,,XLME,Der,LME
+Y,London Stock Exchange (EQS),GB,WEA,LO,XLON,Eq,EQS
+Y,London Stock Exchange (domestic),GB,WEA,LN,"AIMX, XLOM, XLON","Der,Eq,FI",LSE
+Y,London Stock Exchange (international),GB,WEA,LI,"XLOM, XLON",Eq,
+Y,London Stock Exchange Group,GB,WEA,,XLON,,
+Y,Lusaka Stock Exchange,ZM,AMA,ZL,XLUS,"Eq,FI,Idx",LuSE
+Y,Luxembourg Stock Exchange,LU,WEA,LX,"EMTF, XLUX",,LUXEM
+Y,Lynx ATS,CA,NAA,DG,LYNX,Eq,
+Y,MBNK - Interregional Stock Exchange of Oil and Gas Industry,RU,EEA,,,Der,MBNK
+Y,MEFF Renta Variable,ES,WEA,,XMRV,"Der,FI",MEFF
+Y,MEXDER Exchange,MX,NAA,,XEMD,Der,MEXDER
+Y,MIAX Emerald,US,NAA,,EMLD,Der,
+Y,MIAX Options Exchange,US,NAA,,XMIO,Der,MIAX
+Y,MIAX Pearl,US,NAA,VP,MPRL,"Der,Eq",
+Y,MTS Austria,AT,WEA,,MCAD,FI,
+Y,MTS Belgium,BE,WEA,,BMTS,FI,
+Y,MTS Bondvision,GB,WEA,,XMTS,FI,
+Y,MTS Czech Republic,CZ,EEA,,MCAD,FI,
+Y,MTS Denmark,DK,WEA,,MTSD,FI,
+Y,MTS Finland,FI,WEA,,MTSF,FI,
+Y,MTS France,FR,WEA,,FMTS,FI,
+Y,MTS Germany,DE,WEA,,MCAD,FI,
+Y,MTS Greece,GR,WEA,,MCAD,FI,
+Y,MTS Group,GB,WEA,,XMTS,,XMTS
+Y,MTS Ireland,IE,WEA,,MCAD,FI,
+Y,MTS Israel,IL,AMA,,MCAD,FI,
+Y,MTS Italy,IT,WEA,,MTSC,FI,
+Y,MTS Netherlands,NL,WEA,,MCAD,FI,
+Y,MTS Portugal,PT,WEA,,MCAD,FI,MEDIP
+Y,MTS Slovakia,ES,WEA,,MCAD,FI,MTSK
+Y,MTS Slovenia,SK,EEA,,MCAD,FI,
+Y,MTS Spain,ES,WEA,,MCAD,FI,
+Y,Macedonian Stock Exchange,MK,EEA,MS,XMAE,"Eq,FI,Idx",MSE
+Y,Malawi Stock Exchange,MW,AMA,MW,XMSW,"Eq,Idx",MSE
+Y,Maldives Stock Exchange,MV,AMA,MX,MALX,Eq,MSE
+Y,Malta Stock Exchange,MT,WEA,MV,XMAL,"Eq,FI,Idx",MSE
+Y,Mauritius Stock Exchange,MU,AMA,MP,XMAU,"Eq,FI,Idx",SEM
+N,Mercado Abierto Electronico,AR,LAA,,XMAB,"Der,FI",MAE
+N,Mercado a Termino de Buenos Aires,AR,LAA,,XMTB,Der,MAT
+Y,Metropolitan Stock Exchange,IN,APA,IG,MCXX,"Der,Eq,Idx",MSEI
+Y,Mexico Stock Exchange,MX,NAA,MF,XMEX,"Eq,FI,Idx",BMV
+Y,Minneapolis Grain Exchange,US,NAA,,XMGE,"Der,Idx",MGEX
+Y,Moldova Stock Exchange,MD,EEA,MB,XMOL,Eq,MSE
+Y,Mongolian Stock Exchange,MN,EEA,MO,XULA,"Eq,FI,Idx",MSE
+Y,Montenegro Stock Exchange,ME,EEA,ME,XMNX,"Eq,FI",MNSE
+Y,Montreal Exchange,CA,NAA,,XMOD,Der,CDE
+Y,Morgan Stanley MTF,,,M0,"MSAX, MSCX, MSNT",Eq,
+Y,Moscow Exchange - MICEX,RU,EEA,"RN, RP, RX","MISX, RTSX","Eq,FI,Idx",MICEX
+Y,Mozambique Stock Exchange,MZ,AMA,MZ,XBVM,"Eq,FI",BVM
+Y,Multi Commodity Exchange of India,IN,APA,,XIMC,Der,MCX
+Y,Munich Stock Exchange,DE,WEA,GM,XMUN,"Eq,FI",
+Y,Muscat Securities Market,OM,AMA,OM,XMUS,"Eq,FI,Idx",MSM
+Y,N2EX UK Power Market,GB,WEA,,N2EX,Der,N2EX
+Y,NASD OTC Securities Exchange,NG,AMA,NJ,NASX,Eq,
+Y,NASDAQ BX,US,NAA,UB,"XBOS, XNAS",Eq,
+Y,NASDAQ CX CSE,CA,NAA,DL,CHIC,Eq,
+Y,NASDAQ CX Toronto,CA,NAA,TX,CHIC,Eq,
+Y,NASDAQ CX Venture,CA,NAA,DV,CHIC,Eq,
+Y,NASDAQ CX2 CSE,CA,NAA,DM,XCX2,Eq,
+Y,NASDAQ CX2 Toronto,CA,NAA,DT,XCX2,Eq,
+Y,NASDAQ CX2 Venture,CA,NAA,DS,XCX2,Eq,
+Y,NASDAQ CXD CSE,CA,NAA,DN,XCXD,"Eq,FI",
+Y,NASDAQ CXD Toronto,CA,NAA,DJ,XCXD,"Eq,FI",
+Y,NASDAQ CXD Venture,CA,NAA,DK,XCXD,"Eq,FI",
+Y,NASDAQ Capital Market,US,NAA,UR,"XNAS, XNCM","Eq,FI",
+Y,NASDAQ Dubai,AE,AMA,DU,DIFX,"Der,Eq,FI,Idx",DIFX
+Y,NASDAQ Futures Exchange,US,NAA,,XPBT,Der,NFX
+Y,NASDAQ Global Market,US,NAA,UQ,"XNAS, XNMS","Eq,FI,Idx",NASDAQ GM
+Y,NASDAQ Global Select,US,NAA,UW,"XNAS, XNGS","Eq,FI",NGS
+Y,NASDAQ Inc.,US,NAA,,XNAS,,
+Y,NASDAQ InterMarket,US,NAA,UT,"XNAS, XNIM","Eq,FI",
+Y,NASDAQ Nordic Ltd.,,,,,,
+Y,NASDAQ OMX APA,NO,WEA,XO,XCSE,"Der,Eq,FI",
+Y,NASDAQ OMX Armenia,AM,EEA,AY,XARM,"Eq,FI",AMX
+Y,NASDAQ OMX BX Options Exchange,US,NAA,,XNDQ,Der,
+Y,NASDAQ OMX Commodities Exchange,NO,WEA,,NORX,Der,
+Y,NASDAQ OMX Copenhagen,DK,WEA,DC,XCSE,"Der,Eq,FI,Idx",
+Y,NASDAQ OMX Helsinki,FI,WEA,FH,"DHEL, DNFI, FNFI, MHEL, MNFI, XHEL","Der,Eq,FI,Idx",
+Y,NASDAQ OMX Iceland,IS,WEA,IR,XICE,"Eq,FI,Idx",ICEX
+Y,NASDAQ OMX PSX,US,NAA,UX,XPSX,"Eq,Idx",PSX
+Y,NASDAQ OMX Riga,LV,EEA,LG,"FNLV, XRIS","Eq,FI,Idx",
+Y,NASDAQ OMX Stockholm,SE,WEA,SS,"CSTO, DNSE, DSTO, FNSE, MNSE, MSTO, XOPV, XSTO","Der,Eq,FI,Idx",
+Y,NASDAQ OMX Tallinn,EE,EEA,ET,"FNEE, XTAL","Eq,FI,Idx",
+Y,NASDAQ OMX Vilnius,LT,EEA,LH,"FNLT, XLIT","Eq,FI,Idx",
+Y,NASDAQ PHLX,US,NAA,,XPHL,Der,PHLX
+Y,NASDAQ Stock Market,US,NAA,,XNAS,,NASDAQ
+Y,NEO Exchange NEO-D,CA,NAA,QG,NEOD,"Eq,FI",NEOD
+Y,NEO Exchange NEO-L,CA,NAA,QF,NEOE,"Eq,FI",NEO
+Y,NEO Exchange NEO-N,CA,NAA,QH,NEON,"Eq,FI",
+Y,NEX,CA,NAA,CV,XTNX,Eq,NEX
+Y,NEX Exchange,GB,WEA,"PZ, XP",NEXX,Eq,
+Y,NSE IFSC,IN,APA,,INSE,Der,NSE IFSC
+Y,NYSE American,US,NAA,UA,XASE,"Der,Eq,FI,Idx",NYSE
+Y,NYSE Arca,US,NAA,UP,ARCX,"Der,Eq,FI,Idx",NYSE
+Y,NYSE Chicago,US,NAA,UM,XCHI,"Eq,FI",CHX
+Y,NYSE National,US,NAA,UC,XCIS,Eq,
+Y,NYSE-American-Arca,US,NAA,,,,
+Y,Nagoya Stock Exchange,JP,APA,JN,XNGO,"Eq,FI,Idx",NSE
+Y,Nairobi Securities Exchange,KE,AMA,KN,XNAI,"Eq,FI",NSE
+Y,Namibian Stock Exchange,,AMA,NW,XNAM,"Eq,FI",NSX
+Y,Nasdaq Canada,CA,NAA,,,,
+Y,National Commodity and Derivatives Exchange India,IN,APA,,XNCD,Der,NCDEX
+Y,National Stock Exchange of Australia,AU,APA,AO,XNEC,Eq,NSX
+Y,National Stock Exchange of India,IN,APA,IS,XNSE,,NSE
+Y,Nepal Stock Exchange,NP,APA,NK,XNEP,Eq,NEPSE
+Y,New EuroMTS,GB,WEA,,NMTS,FI,
+Y,New York Mercantile Exchange,US,NAA,,"XNYM,XNYL",Der,NYMEX
+Y,New York Stock Exchange,US,NAA,UN,"ALDP, AMXO, ARCD, ARCO, ARCX, NYSD, XASE, XNLI, XNYS","Eq,FI,Idx",NYSE
+Y,New Zealand Exchange,NZ,APA,NZ,XNZE,"Der,Eq,FI,Idx",NZX
+Y,Nigerian Stock Exchange,NG,AMA,NL,XNSA,"Eq,FI,Idx",NSE
+Y,Nile Stock Exchange,EG,AMA,EI,NILX,Eq,NILEX
+Y,Nord Pool Spot,NO,WEA,,NOPS,Der,
+Y,Nord Pool Spot ASA,NO,WEA,,NOPS,,
+Y,Nordic Derivatives Exchange,SE,WEA,,,,NDX
+Y,Nordic Derivatives Exchange Finland,FI,WEA,,XNDX,Der,NDX
+Y,Nordic Derivatives Exchange Sweden,SE,WEA,,XNDX,"Der,FI",
+Y,Nordic Growth Market,SE,WEA,NG,XNGM,"Eq,FI",NGM
+Y,Norwegian OTC Market,NO,WEA,NS,NOTC,Eq,NOTC
+Y,OMEL Mercado de Electricidad,ES,WEA,,OMEL,Der,OMEL
+Y,OMIP Operador De Mercado Iberico De Energia,PT,WEA,,OMIP,Der,OMIP
+Y,OTC Bulletin Board,US,NAA,UU,XOTC,Eq,OTCBB
+Y,OTC Markets (Quotes Only),US,NAA,PQ,"OTCM, PINX","Eq,FI",
+Y,OTC US,US,NAA,UV,"OOTC,PINC,PINI,PINL","Eq,FI",
+Y,OTC-X Berner KantonalBank,CH,WEA,XK,"ZKBX,AIXE,OTXB",Eq,OTC-X
+Y,Omega ATS,CA,NAA,TG,"LYNX, OMGA","Eq,FI",
+Y,One Chicago,US,NAA,,XOCH,Der,
+Y,Osaka Dojima Commodity Exchange,JP,APA,,XKAC,Der,ODE
+Y,Osaka Exchange,JP,APA,,XOSE,Der,OSE
+Y,Oslo Bors,NO,WEA,NO,"MERD, MERK, NIBR, XOAD, XOAM, XOAS, XOSC, XOSD, XOSL","Der,Eq,FI,Idx",OSE
+Y,Oslo Bors APA,NO,WEA,XN,MERK,"Eq,FI",OSE
+Y,Oslo Bors VPS,NO,WEA,,XOSL,,
+Y,PFTS Stock Exchange,UA,EEA,"OU, QU","PFTQ, PFTS","Eq,FI,Idx",PFTS
+Y,PURE Trading,CA,NAA,CJ,PURE,"Eq,FI",
+Y,Pakistan Mercantile Exchange,PK,APA,,NCEL,Der,PMEX
+Y,Pakistan Stock Exchange,PK,APA,PK,XKAR,"Der,Eq,Idx",KSE
+Y,Palestine Securities Exchange,PS,AMA,PS,XPAE,"Eq,Idx",PEX
+Y,Panama Stock Exchange,PA,LAA,PP,XPTY,"Eq,FI,Idx",BVP
+Y,Philippine Stock Exchange,PH,APA,PM,XPHS,"Eq,Idx",PSE
+Y,Polish Power Exchange,PL,WEA,,PLPX,Der,POLPX
+Y,Port Moresby Stock Exchange,PG,APA,PB,XPOM,Eq,POMSOX
+Y,Powernext,FR,WEA,,XPOW,Der,
+Y,Prague Stock Exchange,CZ,EEA,CK,"XPRA, XPRM","Eq,FI,Idx",PSE
+Y,QUOTRIX,DE,WEA,QT,XQTX,"Eq,FI",
+Y,Qatar Exchange,QA,AMA,QD,DSMD,"Eq,FI,Idx",QE
+N,Rosario Futures Exchange,AR,LAA,,ROFX,Der,ROFEX
+Y,Russian Trading System,RU,EEA,RR,RTSX,"Der,Eq,Idx",RTS
+Y,Rwanda Stock Exchange,RW,AMA,RW,RSEX,"Eq,FI",RSE
+Y,SH-HK Connect Northbound,CN,APA,C1,XSSC,"Eq,Idx",
+Y,SH-HK Connect Southbound,HK,APA,H1,SHSC,"Eq,Idx",
+Y,SIGMA X MTF,GB,WEA,S1,SGMX,Eq,
+Y,SIX Group,CH,WEA,,XSWX,,
+Y,SIX Structured Products Exchange,CH,WEA,SX,XQMH,"Der,Eq,FI,Idx",
+Y,SIX Swiss Exchange,CH,WEA,"SE, XW","XBTR, XICB, XQMH, XSLS, XSWM, XSWX, XVTX","Der,Eq,FI,Idx",SWX
+Y,SIX Swiss Exchange Europe,CH,WEA,VX,XVTX,"Eq,FI",
+Y,SZ-HK Connect Northbound,CN,APA,C2,XSEC,"Eq,Idx",
+Y,SZ-HK Connect Southbound,HK,APA,H2,SZSC,"Eq,Idx",
+Y,Sapporo Securities Exchange,JP,APA,JS,XSAP,Eq,
+Y,Sarajevo Stock Exchange,BA,EEA,BT,XSSE,"Eq,FI,Idx",SASE
+Y,Saudi Arabian Stock Exchange,SA,AMA,AB,XSAU,"Eq,FI,Idx",
+Y,Set-FX,CO,LAA,,,FI,
+Y,Seychelles Securities Exchange,SC,APA,SZ,TRPX,Eq,Trop-X
+Y,Shanghai Futures Exchange,CN,APA,,XSGE,,SHFE
+Y,Shanghai Gold Exchange,CN,APA,,SGEX,Der,SGE
+Y,Shanghai International Energy Exchange,CN,APA,,XINE,Der,INE
+Y,Shanghai Stock Exchange,CN,APA,CG,"XINE, XSHG, XSSC","Der,Eq,FI,Idx",SSE
+Y,Shenzhen Stock Exchange,CN,APA,CS,XSHE,"Eq,FI,Idx",SZSE
+Y,Sierra Leone Stock Exchange,SL,AMA,SU,,Eq,
+Y,Singapore Exchange,SG,APA,SP,"XSCA, XSCE, XSES, XSIM","Der,Eq,FI,Idx",SGX
+Y,Sociedad de Bolsas (SIBE),ES,WEA,SQ,XMAD,"Eq,FI",SIBE
+Y,South African Futures Exchange,ZA,AMA,,XSAF,"Der,Idx",SAFEX
+Y,South Pacific Stock Exchange,FJ,APA,FS,XSPS,"Eq,Idx",SPSE
+Y,Spotlight Stock Market,SE,WEA,KA,XSAT,Eq,
+Y,St. Petersburg International Mercantile Exchange,RU,EEA,,SPIM,"Der,Idx",SPIMEX
+Y,St. Petersburg Stock Exchange,RU,EEA,,XPET,"Der,Eq",SPBEX
+Y,Stuttgart Stock Exchange,DE,WEA,GS,XSTU,,
+Y,Swaziland Stock Exchange,SZ,AMA,SD,XSWA,"Eq,FI",SSX
+Y,TBS Poland,PL,WEA,,TBSP,FI,
+Y,TMX Group,CA,NAA,,,,
+Y,TSX Toronto Exchange,CA,NAA,CT,XTSE,"Eq,FI,Idx",TSX
+Y,TSX Venture Exchange,CA,NAA,CV,XTSX,"Eq,FI,Idx",TSX-V
+Y,Taipei Exchange,TW,APA,TT,ROCO,"Eq,FI,Idx",TPEx
+Y,Taiwan Futures Exchange,TW,APA,,XTAF,Der,TAIFEX
+Y,Taiwan Stock Exchange,TW,APA,TT,"ROCO, XTAI","Eq,FI,Idx",TWSE
+Y,Takasbank,TR,AMA,,,FI,
+Y,Tel Aviv Stock Exchange,IL,AMA,IT,XTAE,"Der,Eq,FI,Idx",TASE
+Y,Thailand Futures Exchange,TH,APA,,TFEX,Der,TFEX
+Y,The International Stock Exchange,GG,WEA,GU,XCIE,"Eq,FI",TISE
+Y,The Stock Exchange of Thailand,TH,APA,TB,"XBKF, XBKK, XMAI","Eq,Idx",SET
+Y,Tokyo Commodity Exchange,JP,APA,,XTKT,Der,TOCOM
+Y,Tokyo Financial Exchange,JP,APA,,XTFF,Der,TFX
+Y,Tokyo Stock Exchange,JP,APA,JT,"XTKS,XJAS","Eq,FI,Idx",TSE
+Y,TradEcho (LSE),GB,WEA,XL,ECHO,"Eq,FI",
+Y,TradEcho Europe,,,,,,
+Y,Tradeweb APA,GB,WEA,XZ,TREA,"Der,Eq,FI,Idx",
+Y,Tradeweb APA EU,NL,WEA,X9,TWEA,"Eq,FI",
+Y,Tradeweb MTF,GB,WEA,T2,TREO,"Der,Eq,FI,Idx",
+Y,Tradeweb MTF EU,NL,WEA,WT,TWEM,"Eq,FI",
+Y,TriAct CSE,CA,NAA,TO,MATN,"Eq,FI",
+Y,TriAct Canada,CA,NAA,TR,MATN,"Eq,FI",
+Y,TriAct Venture,CA,NAA,TV,MATN,"Eq,FI",
+Y,Trinidad and Tobago Stock Exchange,TT,LAA,TP,XTRN,"Eq,FI,Idx",TTSE
+Y,Tunis Stock Exchange,TN,AMA,TU,XTUN,"Eq,FI,Idx",
+Y,Turquoise,GB,WEA,TQ,"TRQM, TRQX",Eq,
+Y,Turquoise Europe,NL,WEA,T1,"TQEM,TQEA,TQEX",Eq,
+Y,UBS MTF,GB,WEA,S2,XUBS,Eq,
+Y,Uganda Securities Exchange,UG,AMA,UG,XUGA,"Eq,FI,Idx",USE
+Y,Ukrainian Stock Exchange,UA,EEA,UK,UKEX,"Der,Eq,FI,Idx",UX
+Y,Vienna APA,AT,WEA,XA,XWBO,"Der,Eq,FI",
+Y,Vienna Stock Exchange,AT,WEA,AV,"EXAA, WBAH, WBDM, WBGF, XCEG, XVIE, XWBO","Eq,FI,Idx",
+Y,Warsaw Stock Exchange,PL,WEA,PW,"BOSP, PLPD, PLPX, RPWC, TBSP, WBCL, WBON, WDER, WETP, WGAS, WIND, WMTF, XNCO, XWAR","Der,Eq,FI,Idx",WSE
+Y,Wiener Borse,AT,WEA,,XWBO,,
+Y,XETRA,DE,WEA,"GE, GQ, GY","XERE, XERT, XETA, XETB, XETR, XEUB, XEUM, XEUP, XEUR",Eq,XETRA
+Y,Xetra ETF,DE,WEA,GT,XETR,Eq,
+Y,Zagreb Stock Exchange,HR,EEA,ZA,"XZAG, XZAM",,
+Y,Zhengzhou Commodity Exchange,CN,APA,,XZCE,Der,ZCE
+Y,Zimbabwe Stock Exchange,ZW,AMA,ZH,XZIM,"Eq,FI,Idx",ZSE
+Y,e-MID,IT,WEA,,EMID,,

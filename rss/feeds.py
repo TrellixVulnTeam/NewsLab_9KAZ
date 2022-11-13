@@ -76,6 +76,9 @@ class Feeds(Thread):
 	def parse_feed(self):
 
 		self.coords.rotate()
+		if len(self.coords) == 0:
+			return
+
 		self.source, self.feed = self.coords[0]
 
 		try:
@@ -112,7 +115,6 @@ class Feeds(Thread):
 			entry['_source'] = 'rss'
 			entry['_id'] = _id
 
-			print(self.source)
 			self.entries.append(entry)
 
 		if len(self.entries) > 0:

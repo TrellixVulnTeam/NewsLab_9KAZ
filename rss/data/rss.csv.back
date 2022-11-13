@@ -79,13 +79,6 @@ Wall Street Journal,https://feeds.a.dj.com/rss/RSSWorldNews.xml,World News,,WSJ.
 Bank of Canada,https://www.bankofcanada.ca/utility/news/feed/,News,,News - Bank of Canada
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml,News,,NYT > Top Stories
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/World.xml,World News,,NYT > World News
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Africa.xml,Africa News,,NYT > World > Africa
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Americas.xml,America News,,NYT > World > Americas
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/AsiaPacific.xml,Asia News,,NYT > World > Asia Pacific
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml,Europe News,,NYT > World > Europe
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml,Middle East News,,NYT > World > Middle East
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/US.xml,US News,,NYT > U.S. News
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Education.xml,US Education,,NYT > Education
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml,US Politics,,NYT > U.S. > Politics
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Business.xml,Business News,,NYT > Business
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/EnergyEnvironment.xml,Environment,,NYT > Business > Energy & Environment
@@ -93,32 +86,8 @@ NY Times,https://rss.nytimes.com/services/xml/rss/nyt/SmallBusiness.xml,Small Bu
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml,Economy,,NYT > Business > Economy
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Dealbook.xml,Dealbook,,NYT > Business > DealBook
 NY Times,https://rss.nytimes.com/services/xml/rss/nyt/MediaandAdvertising.xml,Media & Advertising,,NYT > Business > Media
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml,Technology News,,NYT > Technology
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/PersonalTech.xml,Technology News,,NYT > Technology > Personal Tech
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml,Sport News,,NYT > Sports
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Baseball.xml,Sport News,,NYT > Sports > Baseball
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/CollegeBasketball.xml,Sport News,,NYT > Sports > College Basketball
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/CollegeFootball.xml,Sport News,,NYT > Sports > College Football
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Golf.xml,Sport News,,NYT > Sports > Golf
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Hockey.xml,Sport News,,NYT > Sports > Hockey
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/ProBasketball.xml,Sport News,,NYT > Sports > Pro Basketball
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/ProFootball.xml,Sport News,,NYT > Sports > Pro Football
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Soccer.xml,Sport News,,NYT > Sports > Soccer
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Tennis.xml,Sport News,,NYT > Sports > Tennis
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Science.xml,Science News,,NYT > Science
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Climate.xml,Science News,,NYT > Climate and Environment
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Space.xml,Science News,,NYT > Science > Space & Cosmos
-NY Times,https://rss.nytimes.com/services/xml/rss/nyt/Health.xml,Health News,,NYT > Health
 Bank of England,https://www.bankofengland.co.uk/rss/news,News,,News
-BBC,http://feeds.bbci.co.uk/news/rss.xml,News,,BBC News - Home
-BBC,http://feeds.bbci.co.uk/news/world/rss.xml,World News,,BBC News - World
-BBC,http://feeds.bbci.co.uk/news/uk/rss.xml,UK News,,BBC News - UK
 BBC,http://feeds.bbci.co.uk/news/business/rss.xml,Business News,,BBC News - Business
-BBC,http://feeds.bbci.co.uk/news/politics/rss.xml,Political News,,BBC News - UK Politics
-BBC,http://feeds.bbci.co.uk/news/health/rss.xml,Health News,,BBC News - Health
-BBC,http://feeds.bbci.co.uk/news/education/rss.xml,Education News,,BBC News - Family & Education
-BBC,http://feeds.bbci.co.uk/news/science_and_environment/rss.xml,Science News,,BBC News - Science & Environment
-BBC,http://feeds.bbci.co.uk/news/technology/rss.xml,Technology News,,BBC News - Technology
 Yahoo Finance,https://finance.yahoo.com/rss/topstories,News,,Yahoo Finance
 Yahoo Finance,https://finance.yahoo.com/rss/popularstories,News,,Yahoo Finance
 MarketWatch,http://feeds.marketwatch.com/marketwatch/topstories/,General,Top Stories,MarketWatch.com - Top Stories
@@ -276,3 +245,9 @@ Google,https://news.google.com/rss/search?q=site:finance.yahoo.com+when:1h&hl=en
 Google,https://news.google.com/rss/search?q=site:zacks.com/*/news+when:1h&hl=en-CA&gl=CA&ceid=CA:en
 Google,https://news.google.com/rss/search?q=site:nasdaq.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
 Google,https://news.google.com/rss/search?q=site:financialpost.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+NewsBTC,https://www.newsbtc.com/feed/
+CoinTelegraph,https://cointelegraph.com/rss
+CoinDesk,https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml
+MarketBeat,https://www.marketbeat.com/rss.ashx?type=headlines
+MarketBeat,https://www.marketbeat.com/rss.ashx?type=originals
+InvestorPlace,https://investorplace.com/content-feed/
