@@ -34,6 +34,7 @@ for group in groups:
 
 ## Manually set GlobeNewsWire to 3 seconds
 group_info[("GlobeNewsWire",)] = 5
+group_info[("Google",)] = 60
 
 for group in group_info:
     print("Group:", group, "Sleep Timer:", group_info[group])

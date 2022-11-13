@@ -8,3 +8,4 @@ sentiment_model/
 clean/data/match.csv
 clean/matches.log
 *tmp/
+.idea/

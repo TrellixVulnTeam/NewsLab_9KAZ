@@ -222,6 +222,29 @@ GlobeNewsWire,https://www.globenewswire.com/RssFeed/industry/7577-Water/feedTitl
 GlobeNewsWire,https://www.globenewswire.com/RssFeed/country/Canada/feedTitle/GlobeNewswire%20-%20News%20from%20Canada,Canada,,GlobeNewswire - News from Canada
 GlobeNewsWire,https://www.globenewswire.com/RssFeed/country/China/feedTitle/GlobeNewswire%20-%20News%20from%20China,China,,GlobeNewswire - News from China
 GlobeNewsWire,https://www.globenewswire.com/RssFeed/country/United%20States/feedTitle/GlobeNewswire%20-%20News%20from%20United%20States,United States,,GlobeNewswire - News from United States
+Google,https://news.google.com/rss/search?q=site:247wallst.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:investing.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:barrons.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:benzinga.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:bloomberg.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:businessinsider.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:businesswire.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:cnbc.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:etftrends.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:foxbusiness.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:globenewswire.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:investors.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:marketwatch.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:newsfilecorp.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:prnewswire.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:reuters.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:seekingalpha.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:tipranks.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:thestreet.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:finance.yahoo.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:zacks.com/*/news+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:nasdaq.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
+Google,https://news.google.com/rss/search?q=site:financialpost.com+when:1h&hl=en-CA&gl=CA&ceid=CA:en
 NewsBTC,https://www.newsbtc.com/feed/
 CoinTelegraph,https://cointelegraph.com/rss
 CoinDesk,https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml
