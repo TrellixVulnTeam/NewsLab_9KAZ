@@ -111,7 +111,29 @@ def get_ticker_info():
 
 	blob.download_to_filename(xz_file)
 	with tar.open(xz_file, "r:xz") as tar_file:
-		tar_file.extractall(path=DIR)
+
+import os
+
+def is_within_directory(directory, target):
+	
+	abs_directory = os.path.abspath(directory)
+	abs_target = os.path.abspath(target)
+
+	prefix = os.path.commonprefix([abs_directory, abs_target])
+	
+	return prefix == abs_directory
+
+def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+
+	for member in tar.getmembers():
+		member_path = os.path.join(path, member.name)
+		if not is_within_directory(path, member_path):
+			raise Exception("Attempted Path Traversal in Tar File")
+
+	tar.extractall(path, members, numeric_owner=numeric_owner) 
+	
+
+safe_extract(tar_file, path=DIR)
 
 	df = pd.read_csv(csv_file)
 
